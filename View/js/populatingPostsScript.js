@@ -44,13 +44,25 @@ function populateCardsWithPosts(cardElementNames, postsToUse)
        }
        else
        {
+           for(var j = i; j < cardElementNames.length; j++)
+           {
+                hideCard(cardElementNames[j]);
+           }
            break;
        }
    }
 }
 
+function hideCard(cardElementName)
+{
+    var card = document.getElementById(cardElementName);
+    card.setAttribute("class", "card hide");
+}
+
 function populateCardWithPost(nameOfCardToPopulate, postToDisplay)
 {
+    var card = document.getElementById(nameOfCardToPopulate); //Unhiding potentially hidden cards...
+    card.setAttribute("class", "card"); //Unhiding potentially hidden cards...
     populateCardWithPostImage(nameOfCardToPopulate, postToDisplay);
     populateCardWithPostContent(nameOfCardToPopulate, postToDisplay);
     populateCardWithPostActions(nameOfCardToPopulate, postToDisplay);
