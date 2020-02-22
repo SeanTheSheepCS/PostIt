@@ -84,17 +84,17 @@ function populateCardWithPostContent(nameOfCardToPopulate, postToDisplay)
     var nameOfModalFullPost = nameOfCardToPopulate + "-modal-full-post";
 
     var cardTitleField = document.getElementById(nameOfCardTitleField);
-    cardTitleField.innerHTML += postToDisplay.title;
+    cardTitleField.innerHTML = postToDisplay.title;
 
     var cardShortenedTextField = document.getElementById(nameOfCardShortenedTextField);
-    cardShortenedTextField.innerHTML += postToDisplay.text;
+    cardShortenedTextField.innerHTML = postToDisplay.text;
 
     var upvoteCounterField = document.getElementById(nameOfUpvoteCounter);
     upvoteCounterField.setAttribute("class", "halfway-fab-three-steps-to-the-left btn-floating center-align")
-    upvoteCounterField.innerHTML += postToDisplay.upvotenumber;
+    upvoteCounterField.innerHTML = postToDisplay.upvotenumber;
 
     var modalFullPost = document.getElementById(nameOfModalFullPost);
-    modalFullPost.innerHTML += ('<div class = "container">');
+    modalFullPost.innerHTML = ('<div class = "container">');
     modalFullPost.innerHTML += ('<img src = ' + postToDisplay.image + ' alt = "' + postToDisplay.imageAltText + '" width = 100% height = 100%> </img>');
     modalFullPost.innerHTML += ("<h4>" + postToDisplay.title + "</h4>");
     modalFullPost.innerHTML += ("<p>" + postToDisplay.text + "</p>");
@@ -118,28 +118,28 @@ function populateCardWithPostActions(nameOfCardToPopulate, postToDisplay)
     cardUpvoteButton.setAttribute("class", "halfway-fab-one-step-to-the-left btn-floating blue waves-effect waves-light");
 
     var cardUpvoteButtonIcon = document.getElementById(nameOfCardUpvoteButtonIcon);
-    cardUpvoteButtonIcon.innerHTML += "arrow_upward";
+    cardUpvoteButtonIcon.innerHTML = "arrow_upward";
 
     var cardDownvoteButton = document.getElementById(nameOfCardDownvoteButton);
     cardDownvoteButton.setAttribute("class", "halfway-fab-two-steps-to-the-left btn-floating orange waves-effect waves-light");
 
     var cardDownvoteButtonIcon = document.getElementById(nameOfCardDownvoteButtonIcon);
-    cardDownvoteButtonIcon.innerHTML += "arrow_downward";
+    cardDownvoteButtonIcon.innerHTML = "arrow_downward";
 
     var cardFavoriteButton = document.getElementById(nameOfCardFavoriteButton);
     cardFavoriteButton.setAttribute("class", "halfway-fab waves-effect waves-light btn-floating blue");
 
     var cardFavoriteButtonIcon = document.getElementById(nameOfCardFavoriteButtonIcon);
-    cardFavoriteButtonIcon.innerHTML += "favorite";
+    cardFavoriteButtonIcon.innerHTML = "favorite";
 
     var cardViewPostButton = document.getElementById(nameOfCardViewPostButton);
-    cardViewPostButton.innerHTML += "View full post";
+    cardViewPostButton.innerHTML = "View full post";
 
     var cardSharePostButton = document.getElementById(nameOfCardSharePostButton);
-    cardSharePostButton.innerHTML += "Share post";
+    cardSharePostButton.innerHTML = "Share post";
 
     var cardGiveAwardButton = document.getElementById(nameOfCardGiveAwardButton);
-    cardGiveAwardButton.innerHTML += "Give award";
+    cardGiveAwardButton.innerHTML = "Give award";
 }
 
 var cardElementNames = ["card-one",
@@ -157,4 +157,5 @@ var samplePostArray = [new Post("Hi", "Lorem ipsum dolor sit amet, consectetur a
                        new Post("Title", "aaaaaaa", 10, "img/four-orange-jellyfish-wallpaper-1784578.jpg", ""),
                        new Post("Another title!", "bbbbbbbbbbbb", 234, "img/person-holding-octopus-1321125.jpg", "")];
 
+populateCardsWithPosts(cardElementNames, samplePostArray);
 populateCardsWithPosts(cardElementNames, samplePostArray);
