@@ -9,6 +9,26 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <style>
+    .halfway-fab-one-step-to-the-left
+    {
+      position: absolute;
+      right: 72px;
+      bottom: -20px;
+    }
+    .halfway-fab-two-steps-to-the-left
+    {
+      position: absolute;
+      right: 120px;
+      bottom: -20px;
+    }
+    .halfway-fab-three-steps-to-the-left
+    {
+      position: absolute;
+      right: 168px;
+      bottom: -20px;
+    }
+  </style>
   <title>Thread Show</title>
 
   <div class="row valign-wrapper">
@@ -17,23 +37,20 @@
             <div class="card blue-grey darken-1">
 
             <div class="card-image">
-                <img src="img/curry.jpg">
-                <span class="card-title">Card Title</span>
-                <a class = "secondary-content btn-floating waves-effect btn-small waves-light red"href="#"><i class="material-icons">thumb_up</i></a>
-                <a class = "secondary-content btn-floating waves-effect btn-small waves-light red"href="#"><i class="material-icons">thumb_down</i></a>
+                <img id="thread_image">
+                <span class="card-title " id = "thread_title"></span>            
+                <a class = " btn-floating halfway-fab-one-step-to-the-left waves-effect btn-small waves-light red" href="#"><i class="material-icons">thumb_up</i></a>
+                <a class = " btn-floating halfway-fab-two-steps-to-the-left waves-effect btn-small waves-light red" href="#"><i class="material-icons">thumb_down</i></a>
             </div>
+
             <div class="card-content white-text">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
+                <p id = "thread_content"></p>
                 </div>
                 <div class="card-action">
                     <ul class="collection">
                         <li class="collection-item avatar">
-                          <img src="img/portrait.jpg" alt="" class="circle">
-                          <span class="title">Title</span>
-                          <p>First Line <br>
-                             Second Line
-                          </p>
+                            <i class="material-icons circle red" id = "icon"></i>
+                          <span class="title" id = "username"></span>
                           <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
                         </li>
                       </ul>
@@ -86,5 +103,6 @@
 
     });
   </script>
+  <script src="control.js"></script>
 </body>
 </html>
