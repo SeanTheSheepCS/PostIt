@@ -32,7 +32,7 @@
         <li><a href="#"> Home </a></li>
         <li><a href="#"> About </a></li>
         <li><a href="#"> Contact </a></li>
-        <li><a href="#"> Login </a></li>
+        <li><a href="#login-modal" class="modal-trigger"> Login </a></li>
         <li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
           <i class="material-icons">notifications</i>
         </a></li>
@@ -40,12 +40,66 @@
     </div>
   </nav>
 
+  <div class="modal" id="login-modal">
+    <div class="modal-content" id="login-modal-content">
+      <div class="row">
+
+
+        <div class = "col s12 m12 l6">
+          <form action ="">
+            <div class="input-field">
+              <input id="login-username-field" type="text" class="validate">
+              <label for="login-username-field">Username</label>
+            </div>
+            <div class="input-field">
+              <input id="login-password-field" type="password" class="validate">
+              <label for="login-password-field">Password</label>
+            </div>
+          </form>
+          <a href="#" class="btn orange">Login</a>
+        </div>
+
+
+        <div class = "col s12 m12 l6">
+          <div class="card">
+            <div class="card-content">
+              <form action ="">
+                <h4> New User? </h4>
+                
+                <div class="input-field">
+                  <input id="register-email-field" type="email" class="validate">
+                  <label for="register-email-field">Email</label>
+                </div>
+
+                <div class="input-field">
+                  <input id="register-username-field" type="text" class="validate">
+                  <label for="register-username-field">Username</label>
+                </div>
+                <div class="input-field">
+                  <input id="register-password-field" type="password" class="validate">
+                  <label for="register-password-field">Password</label>
+                </div>
+                <div class="input-field">
+                  <input id="register-password-confirm-field" type="password" class="validate">
+                  <label for="register-password-confirm-field">Confirm Password</label>
+                </div>
+                <a href="#" class="btn orange">Register</a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
 
   <ul class="sidenav" id="mobile-links">
     <li><a href="#"> Home </a></li>
     <li><a href="#"> About </a></li>
     <li><a href="#"> Contact </a></li>
-    <li><a href="#"> Login </a></li>
+    <li><a href="#login-modal" class="modal-trigger"> Login </a></li>
   </ul>
 
   <style>
@@ -85,9 +139,17 @@
           <span class="truncate" id="card-one-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-one-modal" class="modal-trigger" id="card-one-action-view-full-post"></a>
-          <a href="#" id="card-one-action-share-post"></a>
-          <a href="#" id="card-one-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-one-modal" class="modal-trigger" id="card-one-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-one-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-one-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -109,9 +171,17 @@
           <span class="truncate" id="card-two-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-two-modal" class="modal-trigger" id="card-two-action-view-full-post"></a>
-          <a href="#" id="card-two-action-share-post"></a>
-          <a href="#" id="card-two-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-two-modal" class="modal-trigger" id="card-two-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-two-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-two-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -133,9 +203,17 @@
           <span class="truncate" id="card-three-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-three-modal" class="modal-trigger" id="card-three-action-view-full-post"></a>
-          <a href="#" id="card-three-action-share-post"></a>
-          <a href="#" id="card-three-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-three-modal" class="modal-trigger" id="card-three-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-three-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-three-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -157,9 +235,17 @@
           <span class="truncate" id="card-four-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-four-modal" class="modal-trigger" id="card-four-action-view-full-post"></a>
-          <a href="#" id="card-four-action-share-post"></a>
-          <a href="#" id="card-four-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-four-modal" class="modal-trigger" id="card-four-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-four-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-four-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -181,9 +267,17 @@
           <span class="truncate" id="card-five-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-five-modal" class="modal-trigger" id="card-five-action-view-full-post"></a>
-          <a href="#" id="card-five-action-share-post"></a>
-          <a href="#" id="card-five-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-five-modal" class="modal-trigger" id="card-five-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-five-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-five-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -205,9 +299,17 @@
           <span class="truncate" id="card-six-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-six-modal" class="modal-trigger" id="card-six-action-view-full-post"></a>
-          <a href="#" id="card-six-action-share-post"></a>
-          <a href="#" id="card-six-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-six-modal" class="modal-trigger" id="card-six-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-six-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-six-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -229,9 +331,17 @@
           <span class="truncate" id="card-seven-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-seven-modal" class="modal-trigger" id="card-seven-action-view-full-post"></a>
-          <a href="#" id="card-seven-action-share-post"></a>
-          <a href="#" id="card-seven-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-seven-modal" class="modal-trigger" id="card-seven-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-seven-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-seven-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -253,9 +363,17 @@
           <span class="truncate" id="card-eight-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-eight-modal" class="modal-trigger" id="card-eight-action-view-full-post"></a>
-          <a href="#" id="card-eight-action-share-post"></a>
-          <a href="#" id="card-eight-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-eight-modal" class="modal-trigger" id="card-eight-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-eight-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-eight-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -277,9 +395,17 @@
           <span class="truncate" id="card-nine-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-nine-modal" class="modal-trigger" id="card-nine-action-view-full-post"></a>
-          <a href="#" id="card-nine-action-share-post"></a>
-          <a href="#" id="card-nine-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-nine-modal" class="modal-trigger" id="card-nine-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-nine-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-nine-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -301,9 +427,17 @@
           <span class="truncate" id="card-ten-shortened-text"></span>
         </div>
         <div class="card-action">
-          <a href="#card-ten-modal" class="modal-trigger" id="card-ten-action-view-full-post"></a>
-          <a href="#" id="card-ten-action-share-post"></a>
-          <a href="#" id="card-ten-action-give-award"></a>
+          <div class="row">
+            <div class="col s12 m6 l3">
+              <a href="#card-ten-modal" class="modal-trigger" id="card-ten-action-view-full-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-ten-action-share-post"></a>
+            </div>
+            <div class="col s12 m6 l3">
+              <a href="#" id="card-ten-action-give-award"></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
