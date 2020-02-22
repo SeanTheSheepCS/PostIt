@@ -46,7 +46,7 @@ function populateCardsWithPosts(cardElementNames, postsToUse)
        {
            for(var j = i; j < cardElementNames.length; j++)
            {
-                hideCard(cardElementNames[j]);
+               hideCard(cardElementNames[j]);
            }
            break;
        }
