@@ -1,6 +1,6 @@
 class Post
 {
-    constructor(title, text, upvotenumber, image, imageAltText)
+    constructor(title, text, upvotenumber, threadID, image, imageAltText)
     {
         if(typeof upvotenumber == 'undefined')
         {
@@ -29,6 +29,7 @@ class Post
         }
         this.title = title;
         this.text = text;
+        this.threadID = threadID;
         this.image = image;
         this.imageAltText = imageAltText;
     }
@@ -93,12 +94,14 @@ function populateCardWithPostContent(nameOfCardToPopulate, postToDisplay)
     upvoteCounterField.setAttribute("class", "halfway-fab-three-steps-to-the-left btn-floating center-align")
     upvoteCounterField.innerHTML = postToDisplay.upvotenumber;
 
+    /*
     var modalFullPost = document.getElementById(nameOfModalFullPost);
     modalFullPost.innerHTML = ('<div class = "container">');
     modalFullPost.innerHTML += ('<img src = ' + postToDisplay.image + ' alt = "' + postToDisplay.imageAltText + '" width = 100% height = 100%> </img>');
     modalFullPost.innerHTML += ("<h4>" + postToDisplay.title + "</h4>");
     modalFullPost.innerHTML += ("<p>" + postToDisplay.text + "</p>");
     modalFullPost.innerHTML += ('</div>');
+    */
 }
 
 function populateCardWithPostActions(nameOfCardToPopulate, postToDisplay)
@@ -133,6 +136,7 @@ function populateCardWithPostActions(nameOfCardToPopulate, postToDisplay)
     cardFavoriteButtonIcon.innerHTML = "favorite";
 
     var cardViewPostButton = document.getElementById(nameOfCardViewPostButton);
+    cardViewPostButton.setAttribute("href", "thread.html#thread_id=" + postToDisplay.threadID)
     cardViewPostButton.innerHTML = "View full post";
 
     var cardSharePostButton = document.getElementById(nameOfCardSharePostButton);
@@ -153,9 +157,9 @@ var cardElementNames = ["card-one",
                         "card-nine",
                         "card-ten"];
 
-var samplePostArray = [new Post("Hi", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", -100000, "img/school-of-fish-2289409.jpg", ""),
-                       new Post("Title", "aaaaaaa", 10, "img/four-orange-jellyfish-wallpaper-1784578.jpg", ""),
-                       new Post("Another title!", "bbbbbbbbbbbb", 234, "img/person-holding-octopus-1321125.jpg", "")];
+var samplePostArray = [new Post("Hi", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", -100000, 1, "img/school-of-fish-2289409.jpg", ""),
+                       new Post("Title", "aaaaaaa", 10, 2, "img/four-orange-jellyfish-wallpaper-1784578.jpg", ""),
+                       new Post("Another title!", "bbbbbbbbbbbb", 234, 3, "img/person-holding-octopus-1321125.jpg", "")];
 
 populateCardsWithPosts(cardElementNames, samplePostArray);
 populateCardsWithPosts(cardElementNames, samplePostArray);
