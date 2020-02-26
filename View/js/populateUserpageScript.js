@@ -11,10 +11,10 @@ class UserDisplayInfo
 function populateUserPage(user)
 {
     var usernameField = document.getElementById("username-field");
-    usernameField.innerHTML = user.username;
     var userIconField = document.getElementById("user-icon");
-    userIconField.innerHTML = user.icon;
     var userEmailField = document.getElementById("user-email");
+    usernameField.innerHTML = user.username;
+    userIconField.innerHTML = user.icon;
     userEmailField.innerHTML = user.email;
 }
 
