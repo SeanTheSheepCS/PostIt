@@ -86,6 +86,12 @@
 	String desc = eachData[3];
 	String userID = eachData[4];
 	String title = eachData[5];
+	String image = (String)request.getAttribute("image");
+	String [] images = image.split("\\*");
+	int random = (int) (Math.random() * ((3 - 0) + 1)) + 0;
+	image = images[random];
+	System.out.println("image:" + image);
+
 
   %>
   
@@ -93,7 +99,7 @@
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
-          <img src="img/four-orange-jellyfish-wallpaper-1784578.jpg" alt="">
+        <img src='<%= image %>' alt="image" id="picture">
           <div class ="halfway-fab-three-steps-to-the-left btn-floating center-align">
          <% 
          out.println(votes);
@@ -103,17 +109,19 @@
       <form action="Upvote" method="post" class="halfway-fab-two-steps-to-the-left btn-floating orange waves-effect waves-light">
 		<div >
 	 
-	 	 
- 			 <input type="hidden" name="postid" value=<%=postId%> />
+	 	 	
+ 		<input type="hidden" name="postid" value=<%=postId%> />
 	 	 <input type="hidden" name="votes" value=<%=votes%> />
 	 	 <input type="hidden" name="desc" value=<%=desc%> />
 	 	 <input type="hidden" name="topic" value=<%=topic%> />
 	 	 <input type="hidden" name="title" value=<%=title%> />
-            <i class="material-icons">arrow_upward</i>
-        <input type="submit" name="upvote" value="">
+	 	  
+	   <i class="material-icons">arrow_upward</i> 	 
+  	   <input type="submit" name="upvote" value="">  
             
 		</div>
-	</form>          
+	</form>         
+	 
    <form action="Downvote" method="post" class="halfway-fab-one-step-to-the-left btn-floating blue waves-effect waves-light">
 		<div >
 	  
@@ -128,6 +136,13 @@
             
 		</div>
 	</form> 
+	
+	    <a href="#" class="halfway-fab-two-steps-to-the-left btn-floating orange waves-effect waves-light">
+            <i class="material-icons">arrow_upward</i>
+          </a>
+              <a href="#" class="halfway-fab-one-step-to-the-left btn-floating blue waves-effect waves-light">
+            <i class="material-icons">arrow_downward</i>
+          </a>
 	
           <a href="#" class="halfway-fab waves-effect waves-light btn-floating blue">
             <i class="material-icons">favorite</i>

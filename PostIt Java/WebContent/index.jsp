@@ -22,6 +22,7 @@
 		</ul>
 
 	</div>
+	
 	<form action="ValidateUser" method="post">
 		<div class="loginbox" id="loginform">
 		<%

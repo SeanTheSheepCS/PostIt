@@ -32,7 +32,8 @@ public class GetPosts extends HttpServlet {
 		String info = "PostID, Votenum, Title, Text/Description, title*PostID2, Votenum2, Title2, Text/Description2, title2";
 		Post posts = new Post(); 
 		info = posts.getPosts();
-		System.out.println("Posts");
+		String image = posts.getImage();
+		request.setAttribute("image", image);
 		System.out.println(info);
 		request.setAttribute("allPosts", info);
 		request.getRequestDispatcher("home.jsp").forward(request, response);

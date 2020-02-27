@@ -45,4 +45,20 @@ public String getPosts() {
 
 	return data;
 }
+
+public String getImage() {
+	String query = "SELECT * FROM images";
+	String images = "";
+	Connection myConn = GetConnection.getMySQLConnection();
+
+try {
+	Statement myStatement = myConn.createStatement();
+	ResultSet myRs = myStatement.executeQuery(query);
+	while (myRs.next()) {
+		images += myRs.getString("image");
+		images += "*";
+	}
+}catch(Exception e) {};
+	return images;
+}
 }
