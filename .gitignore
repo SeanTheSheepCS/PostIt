@@ -1,1 +1,5 @@
-/.metadata/
+*.metadata/
+*.classpath
+*.settings
+*bin
+*.Servers/
