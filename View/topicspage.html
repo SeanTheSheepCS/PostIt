@@ -12,44 +12,164 @@
 </head>
 
 <body>
+
+  <nav class="nav-wrapper indigo">
+    <div class="container">
+      <a href="#" class="brand-logo"> Post-It</a>
+      <a href="#" class="sidenav-trigger" data-target="mobile-links">
+        <i class = "material-icons">menu</i>
+      </a>
+      <ul class = "right hide-on-med-and-down">
+        <li><a href="#"> Home </a></li>
+        <li><a href="#"> About </a></li>
+        <li><a href="#"> Contact </a></li>
+        <li><a href="#login-modal" class="modal-trigger"> Login </a></li>
+        <li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
+          <i class="material-icons">notifications</i>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="modal" id="login-modal">
+    <div class="modal-content" id="login-modal-content">
+      <div class="row">
+
+
+        <div class = "col s12 m12 l6">
+          <form action ="">
+            <div class="input-field">
+              <input id="login-username-field" type="text" class="validate">
+              <label for="login-username-field">Username</label>
+            </div>
+            <div class="input-field">
+              <input id="login-password-field" type="password" class="validate">
+              <label for="login-password-field">Password</label>
+            </div>
+          </form>
+          <a href="#" class="btn orange">Login</a>
+        </div>
+
+
+        <div class = "col s12 m12 l6">
+          <div class="card">
+            <div class="card-content">
+              <form action ="">
+                <h4> New User? </h4>
+                
+                <div class="input-field">
+                  <input id="register-email-field" type="email" class="validate">
+                  <label for="register-email-field">Email</label>
+                </div>
+
+                <div class="input-field">
+                  <input id="register-username-field" type="text" class="validate">
+                  <label for="register-username-field">Username</label>
+                </div>
+                <div class="input-field">
+                  <input id="register-password-field" type="password" class="validate">
+                  <label for="register-password-field">Password</label>
+                </div>
+                <div class="input-field">
+                  <input id="register-password-confirm-field" type="password" class="validate">
+                  <label for="register-password-confirm-field">Confirm Password</label>
+                </div>
+                <a href="#" class="btn orange">Register</a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <ul class="sidenav" id="mobile-links">
+    <li><a href="#"> Home </a></li>
+    <li><a href="#"> About </a></li>
+    <li><a href="#"> Contact </a></li>
+    <li><a href="#login-modal" class="modal-trigger"> Login </a></li>
+  </ul>
+
   <div class= "container">
-    <h1 class="center blue lighten-2"> Topics </h1>
     <ul class="collection">
-      <li class="collection-item avatar">
-        <i class="material-icons circle">folder</i>
-        <span class="title" id="topic-one-title">Topic Title</span>
-        <p>Topic Description </p>
-        <p>How many members </p>
+
+
+      <li class="collection-item avatar" id="topic-one-card">
+        <i class="material-icons circle" id="topic-one-card-icon">folder</i>
+        <span class="title" id="topic-one-card-title">Topic Title</span>
+        <p id="topic-one-card-description">Topic Description </p>
+        <p id="topic-one-card-member-count">How many members </p>
         <div class="secondary-content">
-          <a href="#" class="btn">Join</a>
-          <a href="#" class="btn">Visit</a>
+          <a href="#" class="btn" id="topic-one-card-join-button">Join</a>
+          <a href="#" class="btn" id="topic-one-card-visit-button">Visit</a>
         </div>
       </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle">folder</i>
-        <span class="title" id="topic-two-title">Topic Title</span>
-        <p>Topic Description </p>
-        <p>How many members </p>
+
+
+      <li class="collection-item avatar" id="topic-two-card">
+        <i class="material-icons circle" id="topic-two-card-icon">folder</i>
+        <span class="title" id="topic-two-card-title">Topic Title</span>
+        <p id="topic-two-card-description">Topic Description </p>
+        <p id="topic-two-card-member-count">How many members </p>
         <div class="secondary-content">
-          <a href="#" class="btn">Join</a>
-          <a href="#" class="btn">Visit</a>
+          <a href="#" class="btn" id="topic-two-card-join-button">Join</a>
+          <a href="#" class="btn" id="topic-two-card-visit-button">Visit</a>
         </div>
       </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle">folder</i>
-        <span class="title" id="topic-three-title">Topic Title</span>
-        <p>Topic Description </p>
-        <p>How many members </p>
+
+
+      <li class="collection-item avatar" id="topic-three-card">
+        <i class="material-icons circle" id="topic-three-card-icon">folder</i>
+        <span class="title" id="topic-three-card-title">Topic Title</span>
+        <p id="topic-three-card-description">Topic Description </p>
+        <p id="topic-three-card-member-count">How many members </p>
         <div class="secondary-content">
-          <a href="#" class="btn">Join</a>
-          <a href="#" class="btn">Visit</a>
+          <a href="#" class="btn" id="topic-three-card-join-button">Join</a>
+          <a href="#" class="btn" id="topic-three-card-visit-button">Visit</a>
         </div>
       </li>
+
+
+      <li class="collection-item avatar" id="topic-four-card">
+        <i class="material-icons circle" id="topic-four-card-icon">folder</i>
+        <span class="title" id="topic-four-card-title">Topic Title</span>
+        <p id="topic-four-card-description">Topic Description </p>
+        <p id="topic-four-card-member-count">How many members </p>
+        <div class="secondary-content">
+          <a href="#" class="btn" id="topic-four-card-join-button">Join</a>
+          <a href="#" class="btn" id="topic-four-card-visit-button">Visit</a>
+        </div>
+      </li>
+
+
+      <li class="collection-item avatar" id="topic-five-card">
+        <i class="material-icons circle" id="topic-five-card-icon">folder</i>
+        <span class="title" id="topic-five-card-title">Topic Title</span>
+        <p id="topic-five-card-description">Topic Description </p>
+        <p id="topic-five-card-member-count">How many members </p>
+        <div class="secondary-content">
+          <a href="#" class="btn" id="topic-five-card-join-button">Join</a>
+          <a href="#" class="btn" id="topic-five-card-visit-button">Visit</a>
+        </div>
+      </li>
+
+
     </ul>
   </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/populateTopicsPage.js"></script>
+
+    <script>
+      $(document).ready(function()
+      {
+        $('.sidenav').sidenav();
+        $('.modal').modal();
+      })
+    </script>
+
 </body>
 </html>
