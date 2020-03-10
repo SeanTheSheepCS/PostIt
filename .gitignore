@@ -1,4 +1,4 @@
 *.metadata/
 *.settings
 *bin
-Servers/
+src/connection/getConnection.java
