@@ -10,7 +10,7 @@ import connection.GetConnection;
 public class User {
 
 	public boolean validateUser(String username, String pass) {
-		String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+		String query = "SELECT * FROM users WHERE username = ? AND user_pwd = ?";
 		Connection myConn;
 		try {
 			myConn = GetConnection.getMySQLConnection();
@@ -47,9 +47,9 @@ public class User {
 		return false;
 	}
 
-	public void addUser(String uName, String pwd) {
+	public void addUser(String uName, String pwd, String email) {
 		Connection myConn;
-		String query = "INSERT INTO users (Username, Password) VALUES (?, ?)";
+		String query = "INSERT INTO users (username, user_pwd, user_email) VALUES (?, ?, ?)";
 
 		try {
 			myConn = GetConnection.getMySQLConnection();
@@ -58,6 +58,7 @@ public class User {
 
 			pStat.setString(1, uName);
 			pStat.setString(2, pwd);
+			pStat.setString(3, email);
 			pStat.executeUpdate();
 
 		} catch (Exception e) {

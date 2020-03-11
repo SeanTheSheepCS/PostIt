@@ -27,16 +27,17 @@ public String getPosts() {
 			int postId = myRs.getInt("post_id");
 			String postContent = myRs.getString("post_content");
 			int topic_id = myRs.getInt("topic_id");
-			int user_id = myRs.getInt("user_id");
+			String user_id = myRs.getString("username");
 			String title = myRs.getString("title");
-	 String query2 = "SELECT * FROM topic AS t WHERE t.topic_id = ?";
+			String uuid = myRs.getString("uuid");
+	 String query2 = "SELECT * FROM topics AS t WHERE t.topic_id = ?";
 		PreparedStatement pStat = myConn.prepareStatement(query2);
 		pStat.setInt(1, topic_id);
 		myRs2 = pStat.executeQuery();
 		if(myRs2.next()) {
 		topic = myRs2.getString("topic_name");
 			}
-		data += postId + "," + votes  +"," + topic + "," + postContent +"," + user_id +"," + title;
+		data += postId + "," + votes  +"," + topic + "," + postContent +"," + user_id +"," + title + "," + uuid;
 		data += "*";
 		}
 	} catch (Exception e) {
