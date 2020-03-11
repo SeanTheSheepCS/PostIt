@@ -29,8 +29,8 @@ public class GetPosts extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In getposts");
-		String info = "PostID, Votenum, Title, Text/Description, title*PostID2, Votenum2, Title2, Text/Description2, title2";
 		Post posts = new Post(); 
+		String info;
 		info = posts.getPosts();
 		String image = posts.getImage();
 		request.setAttribute("image", image);

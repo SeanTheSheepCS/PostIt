@@ -16,9 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Command;
+import model.Query;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
+import java.util.UUID;
 /**
  * Servlet implementation class PostController
  */
@@ -38,90 +41,53 @@ public class PostController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Got into post controller");
+		System.out.println("Got into post controller GET");
+		//String title = request.getParameter("title");
+		//String votes = request.getParameter("votes");
+		String postuuid = request.getParameter("uuid");
+		//String desc = request.getParameter("desc");
+		
 		//Gets all comments for corresponding post ID/name from model
-//		ScriptEngineManager manager = new ScriptEngineManager();
-//		ScriptEngine engine = manager.getEngineByName("javascript");
-//
-//		FileInputStream fileInputStream = new FileInputStream("C:\\Users\\Owner\\Desktop\\SENG 401\\PostIt\\WebContent\\js\\control.js");
-//		      if (fileInputStream != null)
-//		{
-//		                BufferedReader reader = new BufferedReader(new InputStreamReader(fileInputStream));
-//		                try {
-//							engine.eval(reader);
-//						
-//
-//		     Invocable invocableEngine = (Invocable)engine;
-//		     Object object = invocableEngine.invokeFunction("welcome", "jaja");
-//		     System.out.println("After calling js method");
-//		                }catch (ScriptException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						} catch (NoSuchMethodException e) {
-//					// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
-//		}
-				RequestDispatcher rd = request.getRequestDispatcher("thread.jsp");
-				rd.forward(request, response);	
+		Query comments = new Query();
+		
+		//Check for new events
+		comments.checkEvents();
+		System.out.println("POSTUUID: 		" + postuuid);
+		String commentList = comments.getComments(postuuid);
+		System.out.println("Comments -------" + commentList);
+		request.setAttribute("comments", commentList);
+		HttpSession session = request.getSession();
+		session.setAttribute("postUUID", postuuid);
+		RequestDispatcher rd = request.getRequestDispatcher("thread.jsp");
+		rd.forward(request, response);	
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*
-	ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-		try {
-			engine.eval("print('Welcome to javascript execution using java')");
-			engine.eval(new FileReader("C:\\Users\\Owner\\Desktop\\SENG 401\\PostIt\\WebContent\\js\\control.js"));
-			
-			Invocable invocable = (Invocable)engine;
-			System.out.println("before js method");
-			invocable.invokeFunction("welcome", "jaja");
-			System.out.println("after js method");
-
-		} catch (ScriptException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch(FileNotFoundException e) {
-			System.out.println("JS File not found!");
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			
-		RequestDispatcher rd = request.getRequestDispatcher("thread.html");
+		System.out.println("Got into post controller POST");
+		//String title = request.getParameter("title");
+		//String votes = request.getParameter("votes");
+		String postuuid = (String)request.getAttribute("parentUUID");
+		//String desc = request.getParameter("desc");
+		
+		//Gets all comments for corresponding post ID/name from model
+		Query comments = new Query();
+		
+		//Check for new events
+		comments.checkEvents();
+		System.out.println("POSTUUID: 		" + postuuid);
+		String commentList = comments.getComments(postuuid);
+		System.out.println("Comments -------" + commentList);
+		request.setAttribute("comments", commentList);
+		HttpSession session = request.getSession();
+		session.setAttribute("postUUID", postuuid);
+		RequestDispatcher rd = request.getRequestDispatcher("thread.jsp");
 		rd.forward(request, response);	
- */
-	}
+			}
 
 }
 
 
-
-
-/*
-
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-System.out.println("Got into post controller");
-//Gets all comments for corresponding post ID/name from model
-String comments = "Postinfo*hi*this is gay*asofs*wmfka*etc*";
-String postInfo = "";
-String postID = request.getParameter("postid");
-String votes = request.getParameter("votes");
-String topic = request.getParameter("topic");
-String description = request.getParameter("desc");
-String title = request.getParameter("title");
-
-	postInfo += postID + votes + topic + description;
-System.out.println(postInfo);
-
-//CALL QUERY SIDE CQRS AND GET COMMENTS USING POST ID
-//img src, content of post
-request.setAttribute("comments", comments);
-RequestDispatcher rd = request.getRequestDispatcher("thread.html");
-rd.forward(request, response);	
-}
-
-*/

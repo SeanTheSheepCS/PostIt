@@ -55,7 +55,7 @@ public class SignupUser extends HttpServlet {
 		}
 
 		else {
-			user.addUser(uName, pwd);
+			user.addUser(uName, pwd, email);
 			HttpSession session = request.getSession();
 			session.setAttribute("username", uName);
 			request.setAttribute("succ", uName);
