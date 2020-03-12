@@ -6,21 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import model.Post;
+import model.Topic;
 
 /**
- * Servlet implementation class GetPosts
+ * Servlet implementation class GetTopics
  */
-@WebServlet("/GetPosts")
-public class GetPosts extends HttpServlet {
+@WebServlet("/GetTopics")
+public class GetTopics extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetPosts() {
+    public GetTopics() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,21 +28,11 @@ public class GetPosts extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("In getposts");
-	
-		//Get topic ID and get posts related to that id
-		HttpSession session = request.getSession();
-		String topicId = (String) session.getAttribute("TopicId");
-		System.out.println("TOPIC ID IN GET POSTS:" + topicId);
-		Post posts = new Post(); 
-		String info;
-		info = posts.getPosts(topicId);
-		String image = posts.getImage();
-		request.setAttribute("image", image);
-		System.out.println(info);
-		request.setAttribute("allPosts", info);
-		request.getRequestDispatcher("home.jsp").forward(request, response);
-
+		System.out.println("Get topics");
+		Topic theTopics = new Topic();
+		String topics = theTopics.getTopics();
+		request.setAttribute("topics", topics);
+		request.getRequestDispatcher("topicspage.jsp").forward(request, response);
 	}
 
 	/**

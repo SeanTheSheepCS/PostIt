@@ -54,31 +54,8 @@ public class ValidateUser extends HttpServlet {
 		if (user.validateUser(uName, uPass)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", uName);
-			response.sendRedirect(request.getContextPath() + "/GetPosts");
-			ScriptEngineManager manager = new ScriptEngineManager();
-			ScriptEngine engine = manager.getEngineByName("JavaScript");
-			// read script file
-			try {
-				engine.eval(Files.newBufferedReader(Paths.get("C:/Scripts/Jsfunctions.js"), StandardCharsets.UTF_8));
-			} catch (ScriptException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			Invocable inv = (Invocable) engine;
-			// call function from script file
-			try {
-				inv.invokeFunction("yourFunction", "param");
-			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ScriptException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			response.sendRedirect(request.getContextPath() + "/GetTopics");
+	
 			}
 
 		else {

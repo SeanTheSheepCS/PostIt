@@ -42,7 +42,6 @@
 			</a>
 			<ul class="right hide-on-med-and-down">
 			<li><a href="GetPosts"> Home </a></li>
-						
 				<li><a href="#"> About </a></li>
 				<li><a href="#"> Contact </a></li>
 				<li><a href="#"> Login </a></li>
@@ -55,6 +54,15 @@
 <title>Thread Show</title>
 <body>
 
+<%
+//Getting post info
+String postInfo = (String) request.getAttribute("postinfo");
+String [] splitPostInfo = postInfo.split("\\|");
+String postTitle = splitPostInfo[0];
+String postDesc = splitPostInfo[1];
+String postUsername = splitPostInfo[2];
+	
+%>
 	<div class="row valign-wrapper">
 		<div class="col s12 m8 offset-m2 valign">
 			<div class="Heading">
@@ -75,14 +83,14 @@
 
 					<div class="card-content white-text">
 						<!--THREAD TEXT-->
-						<p id="thread_content"></p>
+						<p><%out.println(postDesc); %></p>
 					</div>
 					<div class="card-action">
 						<ul class="collection">
 							<!--BELOW IS AUTHOR INFORMATION-->
 							<li class="collection-item avatar"><i
 								class="material-icons circle" id="author-icon"></i> <span
-								class="title" id="author-name"></span> <a href="#!"
+								class="title"><%out.println(postUsername + ":     " + postTitle); %></span> <a href="#!"
 								class="secondary-content"><i class="material-icons">grade</i></a>
 							</li>
 						</ul>
@@ -92,11 +100,17 @@
 
 
 			<!-- THIS IS WHERE THE COMMENTS ARE STORED-->
+			
+		<%
+		String comments = (String) request.getAttribute("comments");
+		if(!comments.isEmpty()){
+		%>	
 			<div class="Comment">
 				<ul class="collection">
 
 					<%
-						String comments = (String) request.getAttribute("comments");
+			
+					//Getting comment info
 						String commentInfo = "";
 						String[] split = comments.split("\\*");
 						for (int i = 0; i < split.length; i++) {
@@ -138,7 +152,7 @@
 
 				</ul>
 			</div>
-
+<%	} %>
 
 			<!--THIS IS WHERE COMMENT ON THREAD IS-->
 			<%

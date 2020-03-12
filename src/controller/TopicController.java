@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,19 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Post;
-
 /**
- * Servlet implementation class GetPosts
+ * Servlet implementation class TopicController
  */
-@WebServlet("/GetPosts")
-public class GetPosts extends HttpServlet {
+@WebServlet("/TopicController")
+public class TopicController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetPosts() {
+    public TopicController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,21 +29,13 @@ public class GetPosts extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("In getposts");
-	
-		//Get topic ID and get posts related to that id
+		// TODO Auto-generated method stub
+		String topic_id = request.getParameter("topicid");
 		HttpSession session = request.getSession();
-		String topicId = (String) session.getAttribute("TopicId");
-		System.out.println("TOPIC ID IN GET POSTS:" + topicId);
-		Post posts = new Post(); 
-		String info;
-		info = posts.getPosts(topicId);
-		String image = posts.getImage();
-		request.setAttribute("image", image);
-		System.out.println(info);
-		request.setAttribute("allPosts", info);
-		request.getRequestDispatcher("home.jsp").forward(request, response);
-
+		session.setAttribute("TopicId", topic_id);
+		System.out.println("TOPIC ID IN TOPICS CONTROLLER : " + topic_id);
+		RequestDispatcher rd = request.getRequestDispatcher("/GetPosts");
+		rd.forward(request, response);	
 	}
 
 	/**

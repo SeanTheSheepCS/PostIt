@@ -3,55 +3,145 @@
 
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--Import Google Icon Font-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!-- Compiled and minified CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="css/materialize.css">
-<!-- Compiled and minified JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<title>PostIt</title>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <title>PostIt</title>
 </head>
 
 <body>
+  <style>
+    nav .badge
+    {
+      position: relative;
+      top: 20px;
+      right: 20px;
+    }
+  </style>
 
-	<style>
-nav .badge {
-	position: relative;
-	top: 20px;
-	right: 20px;
-}
-</style>
+  <nav class="nav-wrapper indigo">
+    <div class="container">
+      <a href="#" class="brand-logo"> Post-It</a>
+      <a href="#" class="sidenav-trigger" data-target="mobile-links">
+        <i class = "material-icons">menu</i>
+      </a>
+      <ul class = "right hide-on-med-and-down">
+        <li><a href="#"> Home </a></li>
+        <li><a href="#"> About </a></li>
+        <li><a href="#"> Contact </a></li>
+        <li><a href="#login-modal" class="modal-trigger"> Login </a></li>
+        <li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
+        
+        <li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
+          <i class="material-icons">notifications</i>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
 
-	<nav class="nav-wrapper indigo">
-		<div class="container">
-			<a href="#" class="brand-logo"> Post-It</a> <a href="#"
-				class="sidenav-trigger" data-target="mobile-links"> <i
-				class="material-icons">menu</i>
-			</a>
-			<ul class="right hide-on-med-and-down">
-				<li><a href="#"> Home </a></li>
-				<li><a href="#"> About </a></li>
-				<li><a href="#"> Contact </a></li>
-				<li><a href="#"> Login </a></li>
-				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
-						<i class="material-icons">notifications</i>
-				</a></li>
-			</ul>
-		</div>
-	</nav>
+  <div class="modal" id="login-modal">
+    <div class="modal-content" id="login-modal-content">
+      <div class="row">
 
 
-	<ul class="sidenav" id="mobile-links">
-		<li><a href="index.jsp"> Home </a></li>
-		<li><a href="#"> About </a></li>
-		<li><a href="#"> Contact </a></li>
-		<li><a href="#"> Login </a></li>
+        <div class = "col s12 m12 l6">
+          <form action ="">
+            <div class="input-field">
+              <input id="login-username-field" type="text" class="validate">
+              <label for="login-username-field">Username</label>
+            </div>
+            <div class="input-field">
+              <input id="login-password-field" type="password" class="validate">
+              <label for="login-password-field">Password</label>
+            </div>
+          </form>
+          <a href="#" class="btn orange">Login</a>
+        </div>
 
-	</ul>
+
+        <div class = "col s12 m12 l6">
+          <div class="card">
+            <div class="card-content">
+              <form action ="">
+                <h4> New User? </h4>
+                
+                <div class="input-field">
+                  <input id="register-email-field" type="email" class="validate">
+                  <label for="register-email-field">Email</label>
+                </div>
+
+                <div class="input-field">
+                  <input id="register-username-field" type="text" class="validate">
+                  <label for="register-username-field">Username</label>
+                </div>
+                <div class="input-field">
+                  <input id="register-password-field" type="password" class="validate">
+                  <label for="register-password-field">Password</label>
+                </div>
+                <div class="input-field">
+                  <input id="register-password-confirm-field" type="password" class="validate">
+                  <label for="register-password-confirm-field">Confirm Password</label>
+                </div>
+                <a href="#" class="btn orange">Register</a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+ <div class="modal" id="Post-modal">
+    <div class="modal-content" id="login-modal-content">
+      <div class="row">
+
+
+        <div class = "col s12 m12 l6">
+          <div class="card">
+            <div class="card-content">
+              <form action ="NewPostController" method = post>
+                <h4> New Post? </h4>
+                
+                <div class="input-field">
+                  <input id="register-email-field" type="text" class="validate" name = "title">
+                  <label for="register-email-field">Title</label>
+                </div>
+
+                <div class="input-field">
+                  <input id="register-username-field" type="text" class="validate" name = "content">
+                  <label for="register-username-field">Text</label>
+                </div>
+    
+            <input type="submit" class="btn orange" value="Share">
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <ul class="sidenav" id="mobile-links">
+    <li><a href="GetPosts"> Home </a></li>
+    <li><a href="#"> About </a></li>
+    <li><a href="#"> Contact </a></li>
+    <li><a href="#login-modal" class="modal-trigger"> Login </a></li>
+        <li><a href="#login-modal" class="modal-trigger"> New Post </a></li>
+    
+  </ul>
 
 	<style>
 .halfway-fab-one-step-to-the-left {
@@ -92,7 +182,6 @@ nav .badge {
 				String[] images = image.split("\\*");
 				int random = (int) (Math.random() * ((3 - 0) + 1)) + 0;
 				image = images[random];
-				System.out.println("image:" + image);
 		%>
 
 
@@ -188,6 +277,18 @@ nav .badge {
 		%>
 
 	</div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script>
+    $(document).ready(function()
+    {
+      $('.sidenav').sidenav();
+      $('.modal').modal();
+    })
+  </script>
+
 
 </body>
 </html>

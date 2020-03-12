@@ -69,5 +69,32 @@ if (EventStream.events.size() >= 0 &&  EventStream.events.size() > EventStream.t
 }
 	
 }
+
+public String getPostInfo(String postuuid) {
+String data = "";
+String query = "SELECT * FROM posts WHERE uuid = ?";
+Connection myConn;
+try {
+	myConn = GetConnection.getMySQLConnection();
+
+	PreparedStatement pStat = myConn.prepareStatement(query);
+	pStat.setString(1, postuuid);
+
+	ResultSet rs = pStat.executeQuery();
+	
+	while(rs.next()) {
+		data+=rs.getString("title");
+		data+= "|";
+		data+= rs.getString("post_content");
+		data+="|";
+		data+=rs.getString("username");
+
+	}
+} catch (Exception e) {
+	e.printStackTrace();
+}
+return data;
+	
+}
 	
 }
