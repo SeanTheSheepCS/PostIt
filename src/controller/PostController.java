@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Command;
+import model.Post;
 import model.Query;
 
 import java.nio.charset.StandardCharsets;
@@ -42,10 +43,17 @@ public class PostController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Got into post controller GET");
-		//String title = request.getParameter("title");
+		String title = request.getParameter("title");
 		//String votes = request.getParameter("votes");
 		String postuuid = request.getParameter("uuid");
-		//String desc = request.getParameter("desc");
+		String desc = request.getParameter("desc");
+		
+
+		
+		
+		//Get post info to pass to page to display
+		String postInfo = title + "|" + desc + "|" + Post.getUsername(postuuid);
+		request.setAttribute("postinfo", postInfo);
 		
 		//Gets all comments for corresponding post ID/name from model
 		Query comments = new Query();
@@ -75,7 +83,9 @@ public class PostController extends HttpServlet {
 		
 		//Gets all comments for corresponding post ID/name from model
 		Query comments = new Query();
-		
+		String postInfo = comments.getPostInfo(postuuid);
+		request.setAttribute("postinfo", postInfo);
+
 		//Check for new events
 		comments.checkEvents();
 		System.out.println("POSTUUID: 		" + postuuid);
