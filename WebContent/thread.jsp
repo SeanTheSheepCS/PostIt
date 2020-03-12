@@ -61,6 +61,10 @@ String [] splitPostInfo = postInfo.split("\\|");
 String postTitle = splitPostInfo[0];
 String postDesc = splitPostInfo[1];
 String postUsername = splitPostInfo[2];
+String image = (String) request.getAttribute("image");
+String[] images = image.split("\\*");
+int random = (int) (Math.random() * ((3 - 0) + 1)) + 0;
+image = images[random];
 	
 %>
 	<div class="row valign-wrapper">
@@ -70,7 +74,7 @@ String postUsername = splitPostInfo[2];
 					<!--THIS DIV SECTION IS WHERE THE THREAD STARTS-->
 					<div class="card-image">
 						<!--THREAD IMAGE-->
-						<img id="thread_image">
+						<img src='<%=image%>' alt="image" id="picture">
 						<!--THREAD TITLE-->
 						<span class="card-title " id="thread_title"></span>
 						<!--THREAD BUTTONS LIKE/DISLIKE-->
