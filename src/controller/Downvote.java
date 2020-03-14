@@ -1,47 +1,54 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Downvote
- */
+import model.Model;
+
 @WebServlet("/Downvote")
 public class Downvote extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Downvote() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private Model model;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public Downvote() {
+		super();
+		model = new Model();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("IN DOWNVOTE CONTROLLER");
-		String postID = request.getParameter("postid");
+
+		String postUUID = request.getParameter("uuid");
 		String votes = request.getParameter("votes");
-		String topic = request.getParameter("topic");
-		String description = request.getParameter("desc");
-		String title = request.getParameter("title");
-		System.out.println(postID+ votes + title);
-		response.getWriter().append("Served at: ").append(request.getContextPath());	}
+
+		System.out.println(postUUID + votes);
+
+		model.downvote(postUUID);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/GetPosts");
+		rd.forward(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("IN DOWNVOTE CONTROLLER");
+
+		String postUUID = request.getParameter("uuid");
+		String votes = request.getParameter("votes");
+
+		System.out.println(postUUID + votes);
+
+		model.downvote(postUUID);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/GetPosts");
+		rd.forward(request, response);
+	}
 
 }
