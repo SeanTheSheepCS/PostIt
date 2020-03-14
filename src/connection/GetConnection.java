@@ -15,6 +15,7 @@ public class GetConnection {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://sql3.freesqldatabase.com:3306/sql3327526", "sql3327526", "FgYxT9fCwI");	
+		//	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/401", "root", "");
 		//	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "kuraikami");	
 
 			return conn;
