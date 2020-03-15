@@ -118,7 +118,6 @@ nav .badge {
 					<script>
 					function submitform(formIDToSubmit)
 					{
-						console.log(formIDToSubmit);
 						document.getElementById(formIDToSubmit).submit();
 					}
 					</script>
