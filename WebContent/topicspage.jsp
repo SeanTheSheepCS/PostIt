@@ -107,28 +107,25 @@
 				for (int i = 0; i < topic.length; i++) {
 
 					String[] topicData = topic[i].split("\\|");
-					String topic_name = topicData[0];
-					String topic_id = topicData[1];
-					String num_members = topicData[2];
+					//The replaces are here because there are issues with escape characters sometimes entering the data. [!] please keep the replaces here [!]    -Sean
+					String topic_name = topicData[0].replace("\\", "");
+					String topic_id = topicData[1].replace("\\", "");
+					String num_members = topicData[2].replace("\\", "");
 			%>
-
-			<li class="collection-item avatar" id="topic-one-card"><i
-				class="material-icons circle" id="topic-one-card-icon">folder</i> <span
-				class="title" id="topic-one-card-title"> <%
- 	out.println(topic_name);
- %>
-			</span>
+			<li class="collection-item avatar" id="topic-one-card">
+				<i class="material-icons circle" id="topic-one-card-icon">folder</i> 
+				<span class="title" id="topic-one-card-title"> <%out.println(topic_name);%> </span>
 				<p id="topic-one-card-description">Topic Description??</p>
 				<p id="topic-one-card-member-count"> <% out.println("Number of members: " + num_members); %></p>
 
 				<div class="secondary-content">
-					<form action="TopicController" method="GET">
-						<input type="hidden" name="topicid" value=<%=topic_id%> /> <input
-							type="submit" class="btn" value="Visit">
+					<a onclick="submitform('<%="visitform,".concat("ID=").concat(topic_id) %>')" class="btn" id="topic-one-card-visit-button">Visit</a>
+					<a onclick="submitform('<%="joinform,".concat("ID=").concat(topic_id) %>')" class="btn" id="topic-one-card-join-button">Join</a>
+					<form action="TopicController" method="GET" id = <%= "visitform,".concat("ID=").concat(topic_id) %> >
+						<input type="hidden" name="topicid" value=<%=topic_id%> /> 
 					</form>
-					<form action="SubscribeController" method="GET">
-						<input type="hidden" name="topicid" value=<%=topic_id%> /> <input
-							type="submit" class="btn" value="Join">
+					<form action="SubscribeController" method="GET" id = <%="joinform".concat(",ID=").concat(topic_id) %>>
+						<input type="hidden" name="topicid" value=<%=topic_id%> /> 
 					</form>
 				</div></li>
 
@@ -141,7 +138,16 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="js/populateTopicsPage.js"></script>
+	<!-- <script src="js/populateTopicsPage.js"></script> -->
+	
+	<script>
+	function submitform(formIDToSubmit)
+	{
+		console.log(formIDToSubmit);
+		document.getElementById(formIDToSubmit).submit();
+	}
+	</script>
+	
 
 </body>
 </html>
