@@ -17,6 +17,7 @@
 </head>
 
 <body>
+
 	<style>
 nav .badge {
 	position: relative;
@@ -32,12 +33,10 @@ nav .badge {
 				class="material-icons">menu</i>
 			</a>
 			<ul class="right hide-on-med-and-down">
-				<li><a href="GetTopics"> Home </a></li>
+				<li><a href="#"> Home </a></li>
 				<li><a href="#"> About </a></li>
 				<li><a href="#"> Contact </a></li>
-				<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
-				<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
-
+				<li><a href="#"> Login </a></li>
 				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
 						<i class="material-icons">notifications</i>
 				</a></li>
@@ -45,104 +44,12 @@ nav .badge {
 		</div>
 	</nav>
 
-	<div class="modal" id="login-modal">
-		<div class="modal-content" id="login-modal-content">
-			<div class="row">
-
-
-				<div class="col s12 m12 l6">
-					<form action="">
-						<div class="input-field">
-							<input id="login-username-field" type="text" class="validate">
-							<label for="login-username-field">Username</label>
-						</div>
-						<div class="input-field">
-							<input id="login-password-field" type="password" class="validate">
-							<label for="login-password-field">Password</label>
-						</div>
-					</form>
-					<a href="#" class="btn orange">Login</a>
-				</div>
-
-
-				<div class="col s12 m12 l6">
-					<div class="card">
-						<div class="card-content">
-							<form action="">
-								<h4>New User?</h4>
-
-								<div class="input-field">
-									<input id="register-email-field" type="email" class="validate">
-									<label for="register-email-field">Email</label>
-								</div>
-
-								<div class="input-field">
-									<input id="register-username-field" type="text"
-										class="validate"> <label for="register-username-field">Username</label>
-								</div>
-								<div class="input-field">
-									<input id="register-password-field" type="password"
-										class="validate"> <label for="register-password-field">Password</label>
-								</div>
-								<div class="input-field">
-									<input id="register-password-confirm-field" type="password"
-										class="validate"> <label
-										for="register-password-confirm-field">Confirm Password</label>
-								</div>
-								<a href="#" class="btn orange">Register</a>
-							</form>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-
-
-	<div class="modal" id="Post-modal">
-		<div class="modal-content" id="login-modal-content">
-			<div class="row">
-
-
-				<div class="col s12 m12 l6">
-					<div class="card">
-						<div class="card-content">
-							<form action="NewPostController" method=post>
-								<h4>New Post?</h4>
-
-								<div class="input-field">
-									<input id="register-email-field" type="text" class="validate"
-										name="title"> <label for="register-email-field">Title</label>
-								</div>
-
-								<div class="input-field">
-									<input id="register-username-field" type="text"
-										class="validate" name="content"> <label
-										for="register-username-field">Text</label>
-								</div>
-
-								<input type="submit" class="btn orange" value="Share">
-							</form>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-
-
-
 
 	<ul class="sidenav" id="mobile-links">
-		<li><a href="GetPosts"> Home </a></li>
+		<li><a href="index.jsp"> Home </a></li>
 		<li><a href="#"> About </a></li>
 		<li><a href="#"> Contact </a></li>
-		<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
-		<li><a href="#login-modal" class="modal-trigger"> New Post </a></li>
+		<li><a href="#"> Login </a></li>
 
 	</ul>
 
@@ -156,7 +63,7 @@ nav .badge {
 .halfway-fab-two-steps-to-the-left {
 	position: absolute;
 	right: 120px;
-	bottom: -67px;
+	bottom: -20px;
 }
 
 .halfway-fab-three-steps-to-the-left {
@@ -185,9 +92,18 @@ nav .badge {
 				String[] images = image.split("\\*");
 				int random = (int) (Math.random() * ((3 - 0) + 1)) + 0;
 				image = images[random];
+				System.out.println("image:" + image);
 		%>
 
-
+		<style>
+		input[type=submit],
+		{
+			position: absolute;
+			right: 72px;
+			bottom: -20px;
+		}
+		</style>
+		
 		<div class="col s12 m6 l3">
 			<div class="card">
 				<div class="card-image">
@@ -199,32 +115,37 @@ nav .badge {
 						%>
 					</div>
 					
-					<form action="Upvote" method="GET">
-						<div class="card-action">
-							<input type="hidden" name="uuid" value=<%=uuid%> />
-							<button
-								class="halfway-fab-two-steps-to-the-left btn-floating orange waves-effect waves-light"
-								type="submit" name="action">
-								<i class="material-icons">arrow_upward</i>
-							</button>
-						</div>
+					<script>
+					function submitform(formIDToSubmit)
+					{
+						console.log(formIDToSubmit);
+						document.getElementById(formIDToSubmit).submit();
+					}
+					</script>
+
+					<form action="Upvote" method="post" id = <%="upvoteform,".concat("ID=").concat(postId)%> >
+							<input type="hidden" name="postid" value=<%=postId%> /> 
+							<input type="hidden" name="votes" value=<%=votes%> /> 
+							<input type="hidden" name="desc" value=<%=desc%> /> 
+							<input type="hidden" name="topic" value=<%=topic%> /> 
+							<input type="hidden" name="title" value=<%=title%> /> 
+							<div onclick = "submitform('<%="upvoteform,".concat("ID=").concat(postId)%>')" class = "halfway-fab-two-steps-to-the-left btn-floating orange waves-effect waves-light"><i class="material-icons">arrow_upward</i></div>
 					</form>
 					
-					<form action="Downvote" method="GET">
-						<div class="card-action">
-							<input type="hidden" name="uuid" value=<%=uuid%> />
-							<button
-								class="halfway-fab-one-step-to-the-left btn-floating blue waves-effect waves-light"
-								type="submit" name="action">
-								<i class="material-icons">arrow_downward</i>
-							</button>
-						</div>
+					<form action="Downvote" method="post" id = <%="downvoteform,".concat("ID=").concat(postId)%> >
+							<input type="hidden" name="postid" value=<%=postId%> /> 
+							<input type="hidden" name="votes" value=<%=votes%> /> 
+							<input type="hidden" name="desc" value=<%=desc%> /> 
+							<input type="hidden" name="topic" value=<%=topic%> /> 
+							<input type="hidden" name="title" value=<%=title%> /> 
+							<div onclick = "submitform('<%="downvoteform,".concat("ID=").concat(postId)%>')" class = "halfway-fab-one-step-to-the-left btn-floating blue waves-effect waves-light"><i class="material-icons">arrow_downward</i></div>
 					</form>
 
 					<a href="#"
 						class="halfway-fab waves-effect waves-light btn-floating blue">
 						<i class="material-icons">favorite</i>
 					</a>
+					
 				</div>
 				<div class="card-content">
 					<span class="card-title"> <%
@@ -242,16 +163,16 @@ nav .badge {
 
 				<div class="card-action">
 
-					<form action="PostController" method="POST">
+					<form action="PostController" method="get">
 						<div>
 							<input type="hidden" name="postid" value=<%=postId%> /> <input
 								type="hidden" name="votes" value=<%=votes%> /> <input
 								type="hidden" name="desc" value=<%=desc%> /> <input
 								type="hidden" name="topic" value=<%=topic%> /> <input
 								type="hidden" name="title" value=<%=title%> /> <input
-								type="hidden" name="postUUID" value=<%=uuid%> /> <input
+								type="hidden" name="uuid" value=<%=uuid%> /> <input
 								type="submit" name="viewPost" value="View full post">
-
+						
 
 						</div>
 					</form>
@@ -265,18 +186,6 @@ nav .badge {
 		%>
 
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-	<script>
-		$(document).ready(function() {
-			$('.sidenav').sidenav();
-			$('.modal').modal();
-		})
-	</script>
-
 
 </body>
 </html>
