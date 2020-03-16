@@ -29,7 +29,8 @@ public class QueryModel {
 
 	public int readEvents(int last_event) {
 
-		String sql = "SELECT * FROM events WHERE event_id > ?;";
+		//String sql = "SELECT * FROM events WHERE event_id > ?;";
+		String sql = "SELECT * FROM events ORDER BY event_id DESC LIMIT 1;";
 
 		String type;
 		String content;
@@ -43,7 +44,7 @@ public class QueryModel {
 
 			Connection conn = GetConnection.getMySQLConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, last_event);
+		//	ps.setInt(1, last_event);
 
 			ResultSet rs = ps.executeQuery();
 

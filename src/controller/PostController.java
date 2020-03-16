@@ -23,10 +23,11 @@ public class PostController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Got into post controller POST");
+		System.out.println("Got into post controller GET");
 
 		HttpSession session = request.getSession();
 
+		
 		String title = request.getParameter("title");
 		String postuuid = request.getParameter("postUUID");
 		String desc = request.getParameter("desc");
@@ -48,12 +49,9 @@ public class PostController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		String title = request.getParameter("title");
 		String postuuid = request.getParameter("postUUID");
-		String desc = request.getParameter("desc");
 
-		String postInfo = title + "|" + desc + "|" + model.getUsername(postuuid);
-
+		String postInfo = model.getPostInfo(postuuid);
 		session.setAttribute("postUUID", postuuid);
 		session.setAttribute("postinfo", postInfo);
 

@@ -227,6 +227,8 @@ public class Model {
 		String query = "INSERT INTO posts (post_content, username , topic_id, uuid, votes, title) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
+			System.out.println("NEW POST USERNAME  " + username);
+			
 			myConn = GetConnection.getMySQLConnection();
 
 			PreparedStatement pStat = myConn.prepareStatement(query);
@@ -303,5 +305,55 @@ public class Model {
 			e.printStackTrace();
 		}
 
+	}
+
+	public String getPostInfo(String postuuid) {
+		String data = "";
+		String query = "SELECT * FROM posts WHERE uuid = ?";
+
+		try {
+
+			Connection myConn = GetConnection.getMySQLConnection();
+			PreparedStatement pStat1 = myConn.prepareStatement(query);
+			pStat1.setString(1, postuuid);
+
+			ResultSet myRs = pStat1.executeQuery();
+			
+			while (myRs.next()) {
+				data += myRs.getString("title");
+				data += "|";
+				data += myRs.getString("post_content");
+				data += "|";
+				data += myRs.getString("username");
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return data;
+	}
+
+	public void createNewTopic(String title) {
+		String sql = "INSERT INTO topic (topic_name, num_members) VALUES (?, ?);";
+		System.out.println("INSIDE SQL, trying to insert new topic");
+		try {
+
+			Connection conn = GetConnection.getMySQLConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, title);
+			ps.setInt(2, 0);
+
+			if (ps.executeUpdate() == 2) {
+				System.out.println("Error inserting user data into database...");
+			}
+			conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
 	}
 }

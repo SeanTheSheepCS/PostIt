@@ -28,50 +28,9 @@ public class CommentControllerCommand extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("Got into CommentControllerCommand doPost");
+		System.out.println("Got into CommentControllerCommand doGet");
 
-		HttpSession hs = request.getSession();
-		String username = (String) hs.getAttribute("username");
-		String post_info = (String) hs.getAttribute("postinfo");
 
-		String parentUUID = request.getParameter("postUUID");
-		String commentInfo = request.getParameter("comment");
-		String event_type = request.getParameter("event_type");
-
-		String comm = request.getParameter("content");
-
-		System.out.println("Comment is: " + comm);
-
-		String uuid = request.getParameter("uuid");
-
-		System.out.println("Event Type: " + event_type);
-
-		switch (event_type) {
-
-		case "CREATE":
-			cm.createCommentEvent(username, parentUUID, commentInfo);
-			break;
-
-		case "EDIT":
-			System.out.println("Got into EDIT in switch");
-			cm.editCommentEvent(username, parentUUID, uuid, commentInfo);
-			break;
-
-		case "DELETE":
-			System.out.println("Got into DELETE in switch");
-			cm.deleteCommentEvent(username, parentUUID, uuid, comm);
-			break;
-
-		default:
-			System.out.println("Invalid event...");
-			break;
-
-		}
-
-		System.out.println("Post info: " + post_info);
-		System.out.println("Username: " + username + " Post UUID: " + parentUUID + " Comment Info: " + commentInfo);
-
-		request.setAttribute("postUUID", parentUUID);
 		RequestDispatcher rd = request.getRequestDispatcher("/PostController");
 		rd.forward(request, response);
 	}
