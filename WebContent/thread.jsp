@@ -160,6 +160,7 @@
 		String postTitle = splitPostInfo[0];
 		String postDesc = splitPostInfo[1];
 		String postUsername = splitPostInfo[2];
+		System.out.println("POST INFO IN THREAD:" + postInfo);
 	%>
 	<div class="row valign-wrapper">
 		<div class="col s12 m8 offset-m2 valign">
@@ -218,7 +219,7 @@
 							String[] split = comments.split("\\*");
 							for (int i = 0; i < split.length; i++) {
 								commentInfo = split[i];
-								System.out.println(split[i]);
+								System.out.println(split[0]);
 								String[] eachCommentData = split[i].split("\\|");
 								String commentDescription = eachCommentData[0];
 								String commentUUID = eachCommentData[1];
@@ -326,6 +327,7 @@
 			<%
 				HttpSession sess = request.getSession();
 				String postUUID = (String) sess.getAttribute("postUUID");
+				if (sess.getAttribute("username") != null) {
 			%>
 			<form action="CommentControllerCommand" method="post">
 				<div class="card blue-grey lighten-5">
@@ -360,7 +362,9 @@
 					</div>
 				</div>
 			</form>
-		
+			<%
+				}
+			%>
 
 
 		</div>

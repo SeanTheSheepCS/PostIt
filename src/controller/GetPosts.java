@@ -36,7 +36,7 @@ public class GetPosts extends HttpServlet {
 		System.out.println(info);
 		request.setAttribute("allPosts", info);
 		request.getRequestDispatcher("home.jsp").forward(request, response);
-
+	
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

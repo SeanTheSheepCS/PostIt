@@ -26,7 +26,7 @@ public class SubscribeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("In SubscibeController POST");
+		System.out.println("In SubscibeController GET");
 
 		HttpSession hs = request.getSession();
 		String username = (String) hs.getAttribute("username");

@@ -156,7 +156,7 @@ nav .badge {
 .halfway-fab-two-steps-to-the-left {
 	position: absolute;
 	right: 120px;
-	bottom: -67px;
+	bottom: -20px;
 }
 
 .halfway-fab-three-steps-to-the-left {
@@ -166,9 +166,14 @@ nav .badge {
 }
 </style>
 
+<%			String text = (String) request.getAttribute("allPosts");
+			System.out.println("ALL POSTS IN HOME.JSP " + text);
+			if (!text.isEmpty()) {
+
+%>
+
 	<div class="row">
 		<%
-			String text = (String) request.getAttribute("allPosts");
 			String postInfo = "";
 			String[] split = text.split("\\*");
 			for (int i = 0; i < split.length; i++) {
@@ -198,26 +203,42 @@ nav .badge {
 							out.println(votes);
 						%>
 					</div>
-					
-					<form action="Upvote" method="GET">
-						<div class="card-action">
-							<input type="hidden" name="uuid" value=<%=uuid%> />
-							<button
-								class="halfway-fab-two-steps-to-the-left btn-floating orange waves-effect waves-light"
-								type="submit" name="action">
-								<i class="material-icons">arrow_upward</i>
-							</button>
+
+					<script>
+						function submitform(formIDToSubmit) {
+							document.getElementById(formIDToSubmit).submit();
+						}
+					</script>
+
+					<form action="Upvote" method="post"
+						id=<%="upvoteform,".concat("ID=").concat(postId)%>>
+						<input type="hidden" name="postid" value=<%=postId%> /> <input
+							type="hidden" name="votes" value=<%=votes%> /> <input
+							type="hidden" name="desc" value=<%=desc%> /> <input
+							type="hidden" name="topic" value=<%=topic%> /> <input
+							type="hidden" name="title" value=<%=title%> /> <input
+							type="hidden" name="uuid" value=<%=uuid%> />
+
+						<div
+							onclick="submitform('<%="upvoteform,".concat("ID=").concat(postId)%>')"
+							class="halfway-fab-two-steps-to-the-left btn-floating orange waves-effect waves-light">
+							<i class="material-icons">arrow_upward</i>
 						</div>
 					</form>
-					
-					<form action="Downvote" method="GET">
-						<div class="card-action">
-							<input type="hidden" name="uuid" value=<%=uuid%> />
-							<button
-								class="halfway-fab-one-step-to-the-left btn-floating blue waves-effect waves-light"
-								type="submit" name="action">
-								<i class="material-icons">arrow_downward</i>
-							</button>
+
+					<form action="Downvote" method="post"
+						id=<%="downvoteform,".concat("ID=").concat(postId)%>>
+						<input type="hidden" name="postid" value=<%=postId%> /> <input
+							type="hidden" name="votes" value=<%=votes%> /> <input
+							type="hidden" name="desc" value=<%=desc%> /> <input
+							type="hidden" name="topic" value=<%=topic%> /> <input
+							type="hidden" name="title" value=<%=title%> /> <input
+							type="hidden" name="uuid" value=<%=uuid%> />
+
+						<div
+							onclick="submitform('<%="downvoteform,".concat("ID=").concat(postId)%>')"
+							class="halfway-fab-one-step-to-the-left btn-floating blue waves-effect waves-light">
+							<i class="material-icons">arrow_downward</i>
 						</div>
 					</form>
 
@@ -225,24 +246,24 @@ nav .badge {
 						class="halfway-fab waves-effect waves-light btn-floating blue">
 						<i class="material-icons">favorite</i>
 					</a>
+
 				</div>
 				<div class="card-content">
 					<span class="card-title"> <%
  	out.println(topic);
  		out.println(title);
  %>
-					</span> <span class="">
-						<p>
+					</span>
+					<span style="display:block;text-overflow: ellipsis;width: 300px;overflow: hidden; white-space: nowrap;">
 							<%
 								out.println(desc);
 							%>
-						</p>
 					</span>
 				</div>
 
 				<div class="card-action">
 
-					<form action="PostController" method="POST">
+					<form action="PostController" method="GET">
 						<div>
 							<input type="hidden" name="postid" value=<%=postId%> /> <input
 								type="hidden" name="votes" value=<%=votes%> /> <input
@@ -266,6 +287,14 @@ nav .badge {
 
 	</div>
 
+<%	}
+			else{		
+%>
+ 
+<p>	No Posts! Be the first to create a Post! </p>
+
+<% } %>
+
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -275,6 +304,9 @@ nav .badge {
 			$('.sidenav').sidenav();
 			$('.modal').modal();
 		})
+		
+		
+		
 	</script>
 
 

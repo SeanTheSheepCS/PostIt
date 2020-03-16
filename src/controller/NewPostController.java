@@ -25,19 +25,7 @@ public class NewPostController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("In new post!");
-		String postContent = request.getParameter("content");
-		String title = request.getParameter("title");
-		HttpSession session = request.getSession();
-
-		// Get topic id
-		int topicID = 1;
-		String username = (String) session.getAttribute("username");
-		int votes = 0;
-		UUID uuid = UUID.randomUUID();
-		String randomUUIDString = uuid.toString();
-
-		model.createNewPost(postContent, username, topicID, randomUUIDString, votes, title);
+		System.out.println("In new post get!");
 
 		RequestDispatcher rd = request.getRequestDispatcher("/GetPosts");
 		rd.forward(request, response);
@@ -45,13 +33,13 @@ public class NewPostController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("In new post!");
+		System.out.println("In new post post!");
 		String postContent = request.getParameter("content");
 		String title = request.getParameter("title");
 		HttpSession session = request.getSession();
-
+		String topicid = (String) session.getAttribute("TopicId");
 		// Get topic id
-		int topicID = 1;
+		int topicID = Integer.parseInt(topicid);
 		String username = (String) session.getAttribute("username");
 		int votes = 0;
 		UUID uuid = UUID.randomUUID();

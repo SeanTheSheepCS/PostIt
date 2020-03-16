@@ -29,6 +29,8 @@
 				<li><a href="#"> About </a></li>
 				<li><a href="#"> Contact </a></li>
 				<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
+				<li><a href="#Topic-modal" class="modal-trigger"> New Topic </a></li>
+			
 				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
 						<i class="material-icons">notifications</i>
 				</a></li>
@@ -91,11 +93,44 @@
 		</div>
 	</div>
 
+
+	<div class="modal" id="Topic-modal">
+		<div class="modal-content" id="login-modal-content">
+			<div class="row">
+
+
+				<div class="col s12 m12 l6">
+					<div class="card">
+						<div class="card-content">
+							<form action="NewTopicController" method=post>
+								<h4>New Topic?</h4>
+
+								<div class="input-field">
+									<input id="register-email-field" type="text" class="validate"
+										name="title"> <label for="register-email-field">Title</label>
+								</div>
+
+								<input type="submit" class="btn orange" value="Share">
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+
 	<ul class="sidenav" id="mobile-links">
 		<li><a href="GetTopics"> Home </a></li>
 		<li><a href="#"> About </a></li>
 		<li><a href="#"> Contact </a></li>
 		<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
+		<li><a href="#Topic-modal" class="modal-trigger"> New Topic </a></li>
+		
 	</ul>
 
 	<div class="container">
@@ -141,7 +176,15 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="js/populateTopicsPage.js"></script>
+
+
+	<script>
+		$(document).ready(function() {
+			$('.sidenav').sidenav();
+			$('.modal').modal();
+		})
+	</script>
+
 
 </body>
 </html>
