@@ -3,3 +3,4 @@
 *bin
 *.classpath
 src/connection/getConnection.java
+/build/
