@@ -49,7 +49,7 @@ public class Main {
   }
 
   @RequestMapping("/")
-  String hello-world() {
+  String helloWorld() {
     return "hello-world";
   }
 
