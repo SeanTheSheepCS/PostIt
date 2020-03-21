@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package main;
+package com.example;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
