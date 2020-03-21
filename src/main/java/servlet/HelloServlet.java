@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //ServletOutputStream out = resp.getOutputStream();
         request.getRequestDispatcher("src/main/webapp/hello.jsp").forward(request, response);
