@@ -1,6 +1,10 @@
-*.metadata/
-*.settings
-*bin
-*.classpath
-src/connection/getConnection.java
-/build/
+target/
+.env
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+docs/tmp/
+docs/java-getting-started/
+docs/deploying-spring-boot-apps/
