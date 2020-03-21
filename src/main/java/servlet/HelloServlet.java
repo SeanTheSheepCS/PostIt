@@ -19,7 +19,7 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //ServletOutputStream out = resp.getOutputStream();
-        request.getRequestDispatcher("src/main/webapp/hello.jsp").forward(request, response);
+        request.getRequestDispatcher("hello.jsp").forward(request, response);
         //out.flush();
         //out.close();
     }
