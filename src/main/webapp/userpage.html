@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <title>PostIt</title>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="collection">
+            <li class="collection-item">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                      <div class="card teal">
+                        <div class="card-content white-text">
+                            <a class= "btn-floating btn-large red" href="#" ><i class="material-icons" id="user-icon"></i></a>
+                          <span class="card-title" id="username-field"></span>
+                          <p id="user-email"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </li>
+            <li class="collection-item">
+                <div class="container">
+                    <h4>Change Password</h4>
+                    <div class="input-field">
+                        <input id="new-password-field" type="password" class="validate">
+                        <label for="new-password-field">New Password</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="confirm-new-password-field" type="password" class="validate">
+                        <label for="confirm-new-password-field">Confirm New Password</label>
+                    </div>
+                    <a href="#" class="btn">Change Password</a>
+                </div>
+            </li>
+            <li class="collection-item">
+                <div class="container">
+                    <h4>Change Email</h4>
+                    <div class="input-field">
+                        <input id="new-email-field" type="email" class="validate">
+                        <label for="new-email-field">New Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="new-email-confirm-field" type="email" class="validate">
+                        <label for="new-email-confirm-field">Confirm New Email</label>
+                    </div>
+                    <a href="#" class="btn">Change Email</a>
+                </div>
+            </li>
+          </ul>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/populateUserpageScript.js"></script>
+</body>
+</html>
