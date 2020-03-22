@@ -14,7 +14,7 @@ public class GetConnection {
 	public static Connection getMySQLConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(System.getenv("CLEARDB_DB_URL"), System.getenv("CLEARDB_DB_USERNAME"), System.getenv("CLEARDB_DB_PASSWORD"));
+			conn = DriverManager.getConnection("jdbc:mysql://" + System.getenv("CLEARDB_DB_URL") + ":3306/" + System.getenv("CLEARDB_DB_DEFAULT_SCHEMA"), System.getenv("CLEARDB_DB_USERNAME"), System.getenv("CLEARDB_DB_PASSWORD"));
 			return conn;
 			} 
 		
