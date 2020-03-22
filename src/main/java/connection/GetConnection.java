@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//CONNECTION WORKS WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
 public class GetConnection {
 	private static Connection conn;
 	public PreparedStatement pStat;
