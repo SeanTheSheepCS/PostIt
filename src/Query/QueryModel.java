@@ -3,7 +3,6 @@ package Query;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import connection.GetConnection;
 import model.CommentEvent;
 
@@ -20,7 +19,7 @@ public class QueryModel {
 		case "EDIT":
 			editComment(ce);
 			break;
-		
+
 		case "DELETE":
 			deleteComment(ce);
 			break;
@@ -29,7 +28,7 @@ public class QueryModel {
 
 	public int readEvents(int last_event) {
 
-		//String sql = "SELECT * FROM events WHERE event_id > ?;";
+		// String sql = "SELECT * FROM events WHERE event_id > ?;";
 		String sql = "SELECT * FROM events ORDER BY event_id DESC LIMIT 1;";
 
 		String type;
@@ -44,7 +43,7 @@ public class QueryModel {
 
 			Connection conn = GetConnection.getMySQLConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-		//	ps.setInt(1, last_event);
+			// ps.setInt(1, last_event);
 
 			ResultSet rs = ps.executeQuery();
 
@@ -70,10 +69,11 @@ public class QueryModel {
 
 	}
 
-	public String getComments(String parent_uuid) {
+	public String getComments(String parent_uuid, boolean nest) {
 
 		String comments = "";
-
+		
+		String temp;
 		String sql = "SELECT * FROM comments WHERE parent_uuid = ?;";
 
 		try {
@@ -83,7 +83,7 @@ public class QueryModel {
 			ps.setString(1, parent_uuid);
 
 			ResultSet rs = ps.executeQuery();
-
+			
 			while (rs.next()) {
 				String content = rs.getString("comment_content");
 				String uuid = rs.getString("uuid");
@@ -91,8 +91,17 @@ public class QueryModel {
 				int votes = rs.getInt("votes");
 				String username = rs.getString("username");
 
-				comments += content + "|" + uuid + "|" + parent + "|" + votes + "|" + username + "*";
+				if(nest)
+					temp = "REPLY|" + content + "|" + uuid + "|" + parent + "|" + votes + "|" + username + "*";
+				else
+					temp = "PARENT|" + content + "|" + uuid + "|" + parent + "|" + votes + "|" + username + "*";
+				
+				comments += temp;
 
+				if((temp = getComments(uuid, true)).compareTo("") != 0) {
+					System.out.println("Comment with uuid: " + uuid + " has nested comments: " + temp);
+					comments += temp;
+				}
 			}
 
 			conn.close();
@@ -102,7 +111,7 @@ public class QueryModel {
 		}
 
 		System.out.println("Comments relating to parent_uuid: " + parent_uuid + " recieved.");
-
+		
 		return comments;
 	}
 
@@ -117,7 +126,6 @@ public class QueryModel {
 		String username = ce.getUsername();
 
 		String sql = "INSERT INTO comments (comment_content, uuid, parent_uuid, votes, username) VALUES (?, ?, ?, ?, ?);";
-
 
 		try {
 
@@ -171,9 +179,9 @@ public class QueryModel {
 		System.out.println("Comment edited!");
 
 	}
-	
+
 	public void deleteComment(CommentEvent ce) {
-		
+
 		String uuid = ce.getUUID();
 
 		String sql = "DELETE FROM comments WHERE uuid = ?;";
@@ -182,7 +190,7 @@ public class QueryModel {
 
 			Connection conn = GetConnection.getMySQLConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
+
 			ps.setString(1, uuid);
 
 			if (ps.executeUpdate() == 2) {
@@ -196,6 +204,6 @@ public class QueryModel {
 		}
 
 		System.out.println("Comment edited!");
-		
+
 	}
 }

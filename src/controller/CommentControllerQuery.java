@@ -28,7 +28,7 @@ public class CommentControllerQuery extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("Got into CommentControllerQuery doget after 5 seconds");
+		System.out.println("Got into CommentControllerQuery doget");
 
 		HttpSession hs = request.getSession();
 		String parent = (String) hs.getAttribute("postUUID");
@@ -40,9 +40,9 @@ public class CommentControllerQuery extends HttpServlet {
 	//	last_event = qm.readEvents(last_event);
 
 		/* Gets all comments related to the post */
-		String comments = qm.getComments(parent);
+		String comments = qm.getComments(parent, false);
 
-	//	System.out.println("Last Event: " + last_event + " Comment info: " + comments);
+		System.out.println("Last Event: " + last_event + " Comment info: " + comments);
 
 		request.setAttribute("comments", comments);
 		request.setAttribute("postinfo", post_info);
@@ -71,7 +71,7 @@ public class CommentControllerQuery extends HttpServlet {
 		last_event = qm.readEvents(last_event);
 
 		/* Gets all comments related to the post */
-		String comments = qm.getComments(parent);
+		String comments = qm.getComments(parent, false);
 
 		System.out.println("Last Event: " + last_event + " Comment info: " + comments);
 

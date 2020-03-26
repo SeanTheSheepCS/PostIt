@@ -10,6 +10,7 @@
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel = "stylesheet" href = "afshstyle.css">	
 <!-- Compiled and minified JavaScript -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -27,8 +28,8 @@
 			<ul class="right hide-on-med-and-down">
 				<li><a href="GetTopics"> Home </a></li>
 				<li><a href="#"> About </a></li>
-				<li><a href="#"> Contact </a></li>
-				<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
+				<li><a href="userpage.jsp"> Profile </a></li>
+			<!-- <li><a href="#login-modal" class="modal-trigger"> Login </a></li>  -->	
 				<li><a href="#Topic-modal" class="modal-trigger"> New Topic </a></li>
 			
 				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
@@ -37,61 +38,13 @@
 			</ul>
 		</div>
 	</nav>
+	
+<form action = "SearchTopicController" method="GET">
+<div class="topnav">
+  <input type="text" placeholder="Please enter a topic name to search for....." name = "topicName">
+<input type="submit" class="btn" value="Search"></div>
+</form>	
 
-	<div class="modal" id="login-modal">
-		<div class="modal-content" id="login-modal-content">
-			<div class="row">
-
-
-				<div class="col s12 m12 l6">
-					<form action="">
-						<div class="input-field">
-							<input id="login-username-field" type="text" class="validate">
-							<label for="login-username-field">Username</label>
-						</div>
-						<div class="input-field">
-							<input id="login-password-field" type="password" class="validate">
-							<label for="login-password-field">Password</label>
-						</div>
-					</form>
-					<a href="#" class="btn orange">Login</a>
-				</div>
-
-
-				<div class="col s12 m12 l6">
-					<div class="card">
-						<div class="card-content">
-							<form action="">
-								<h4>New User?</h4>
-
-								<div class="input-field">
-									<input id="register-email-field" type="email" class="validate">
-									<label for="register-email-field">Email</label>
-								</div>
-
-								<div class="input-field">
-									<input id="register-username-field" type="text"
-										class="validate"> <label for="register-username-field">Username</label>
-								</div>
-								<div class="input-field">
-									<input id="register-password-field" type="password"
-										class="validate"> <label for="register-password-field">Password</label>
-								</div>
-								<div class="input-field">
-									<input id="register-password-confirm-field" type="password"
-										class="validate"> <label
-										for="register-password-confirm-field">Confirm Password</label>
-								</div>
-								<a href="#" class="btn orange">Register</a>
-							</form>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-	</div>
 
 
 	<div class="modal" id="Topic-modal">
@@ -132,11 +85,17 @@
 		<li><a href="#Topic-modal" class="modal-trigger"> New Topic </a></li>
 		
 	</ul>
+	<%
+				String topics = (String) request.getAttribute("topics");
+			if(!topics.isEmpty()){									
+			
+	%>
 
 	<div class="container">
 		<ul class="collection">
-			<%
-				String topics = (String) request.getAttribute("topics");
+		
+			
+			<% 										
 				String[] topic = topics.split("\\*");
 
 				for (int i = 0; i < topic.length; i++) {
@@ -172,6 +131,12 @@
 			%>
 		</ul>
 	</div>
+<%
+}
+			else{			
+%>
+<p>No topics found!</p>
+<%} %>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
