@@ -33,7 +33,7 @@ nav .badge {
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="GetTopics"> Home </a></li>
-				<li><a href="#"> About </a></li>
+				<li><a href="#About-modal" class="modal-trigger"> About </a></li>
 				<li><a href="#"> Contact </a></li>
 				<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
 				<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
@@ -99,6 +99,17 @@ nav .badge {
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal" id="About-modal">
+		<div class="modal-content" id="about-modal-content">
+			<div class="row">
+			<!-- This is what PostIt is ALL about! -->
+
+
+
+			</div>
+		</div>
+	</div>
 
 
 	<div class="modal" id="Post-modal">
@@ -138,11 +149,11 @@ nav .badge {
 
 
 	<ul class="sidenav" id="mobile-links">
-		<li><a href="GetPosts"> Home </a></li>
-		<li><a href="#"> About </a></li>
+		<li><a href="GetTopics"> Home </a></li>
+		<li><a href="#About-modal" class="modal-trigger"> About </a></li>
 		<li><a href="#"> Contact </a></li>
 		<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
-		<li><a href="#login-modal" class="modal-trigger"> New Post </a></li>
+		<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
 
 	</ul>
 
@@ -277,7 +288,7 @@ nav .badge {
 						</div>
 					</form>
 
-					<a href="#"> Share post </a> <a href="#"> Give award </a>
+					<a href="#"> Share post </a>
 				</div>
 			</div>
 		</div>

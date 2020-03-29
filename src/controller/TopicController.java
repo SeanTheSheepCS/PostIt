@@ -25,6 +25,7 @@ public class TopicController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("TopicId", topic_id);
 		System.out.println("TOPIC ID IN TOPICS CONTROLLER : " + topic_id);
+		//System.out.println("NOW, Username: "+ session.getAttribute("username"));
 		RequestDispatcher rd = request.getRequestDispatcher("/GetPosts");
 		rd.forward(request, response);
 	}

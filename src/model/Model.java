@@ -94,19 +94,19 @@ public class Model {
 
 	public void upvote(String uuid) {
 
-		String sql = "UPDATE posts SET votes = votes + 1 WHERE uuid = ?;";
+		String addLikeQuerry = "UPDATE posts SET votes = votes + 1 WHERE uuid = ?;";
 
 		try {
 
 			Connection conn = GetConnection.getMySQLConnection();
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(addLikeQuerry);
 			ps.setString(1, uuid);
 
 			if (ps.executeUpdate() == 2) {
 				System.out.println("Error inserting user data into database...");
 			}
 
-			conn.close();
+			//conn.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();

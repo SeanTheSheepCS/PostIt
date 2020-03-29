@@ -138,8 +138,7 @@ function populateCardWithPostActions(nameOfCardToPopulate, postToDisplay)
     var cardSharePostButton = document.getElementById(nameOfCardSharePostButton);
     cardSharePostButton.innerHTML = "Share post";
 
-    var cardGiveAwardButton = document.getElementById(nameOfCardGiveAwardButton);
-    cardGiveAwardButton.innerHTML = "Give award";
+    
 }
 
 var cardElementNames = ["card-one",

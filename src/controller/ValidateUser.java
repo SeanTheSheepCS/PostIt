@@ -29,6 +29,7 @@ public class ValidateUser extends HttpServlet {
 		if (model.validateUser(uName, uPass)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", uName);
+			
 			response.sendRedirect(request.getContextPath() + "/GetTopics");
 
 		}
