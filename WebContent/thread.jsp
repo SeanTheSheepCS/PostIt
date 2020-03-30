@@ -32,6 +32,24 @@
 	right: 168px;
 	bottom: -20px;
 }
+
+.big-nice-allignments {
+	position: absolute;
+	right: 20px;
+	bottom: 30px;
+}
+
+.big-nice-allignments-delete {
+	position: absolute;
+	right: 30px;
+	bottom: -8px;
+}
+
+.big-nice-allignments-edit {
+	position: absolute;
+	right: 400px;
+	bottom: 30px;
+}
 </style>
 
 <title>Thread Show</title>
@@ -70,7 +88,7 @@
 							<input id="login-password-field" type="password" class="validate">
 							<label for="login-password-field">Password</label>
 						</div>
-					<a href="#" class="btn orange">Login</a>
+						<a href="#" class="btn orange">Login</a>
 					</form>
 				</div>
 
@@ -221,94 +239,113 @@
 								commentInfo = split[i];
 								System.out.println(split[0]);
 								String[] eachCommentData = split[i].split("\\|");
-								String commentDescription = eachCommentData[0];
-								String commentUUID = eachCommentData[1];
-								String commentParentUUID = eachCommentData[2];
-								String votes = eachCommentData[3];
-								String commentUsername = eachCommentData[4];
+								String reply = eachCommentData[0];
+								String commentDescription = eachCommentData[1];
+								String commentUUID = eachCommentData[2];
+								String commentParentUUID = eachCommentData[3];
+								String votes = eachCommentData[4];
+								String commentUsername = eachCommentData[5];
 					%>
 					<div class="card  blue-grey lighten-5">
 						<div class="card-content">
 							<li id="comment-0"><i class="material-icons circle"
-								id="comment-0-icon"></i> <span class="title"> <%
- 	out.println(commentUsername);
- %>
+								id="comment-0-icon"></i> <span class="title">
+						<strong> <% 	out.println(commentUsername);
+ %></strong>
 							</span>
 								<p>
 
 									<%
+									
+									HttpSession sesse = request.getSession();
+									String postNum = (String) sesse.getAttribute("postUUID");
+									if(postNum.compareTo(commentParentUUID) != 0 ){
+										for(int z = 0; z< split.length; z++){
+											String[] tempCommentData = split[z].split("\\|");
+											if(commentParentUUID.compareTo(tempCommentData[2]) == 0){
+												out.println("Reply to: ");
+												out.println("'" + tempCommentData[1] + "'");
+											}
+								
+							%>
+							<p></p>
+							<% 
+									}
+							}
+									
 										out.println(commentDescription);
+										//		out.println("COMMENT UUID " + commentUUID);
+
+												//if(reply.compareTo("REPLY") == 0)
+										//		out.println("REPLY TO: " + commentParentUUID);
 									%>
-								</p> <a onclick="showMessage(0)"
-								class="secondary-content waves-effect waves-light btn-small"><i
-									class="material-icons left">add</i>Reply</a></li>
+								</p>
+								
 							<%
-								HttpSession sess = request.getSession();
-										String postUUID = (String) sess.getAttribute("postUUID");
-										String uname = (String) sess.getAttribute("username");
-										if (commentUsername.compareTo(uname) == 0) {
-							%>
-
-							<div class="container">
-								<form action="CommentControllerCommand" method="POST">
-									<div class="card-action">
-										<input type="hidden" name="event_type" value="DELETE" /> <input
-											type="hidden" name="uuid" value=<%=commentUUID%> /> 
-											<input type="hidden" name="content" value=<%=commentDescription%> /><label
-											for="icon_prefix3"></label> <input type="hidden"
-											name="postUUID" value=<%=postUUID%> />
-										<button class="btn blue" type="submit" name="action">Delete</button>
-									</div>
-								</form>
-							</div>
-
-							<div class="container">
-								<a href="#edit-modal" class="modal-trigger"
-									data-target="edit-modal"> <i class="btn blue"> Edit </i>
-								</a>
-							</div>
-
-							<div class="modal" id="edit-modal">
-								<div class="modal-content" id="edit-modal-content">
-									<div class="row">
-
-										<div class="col s12 m12 l6">
-											<form action="CommentControllerCommand" method="POST">
-												<div class="row">
-													<div class="input-field col s10">
-														<i class="material-icons prefix">mode_edit</i>
-														<textarea id="icon_prefix3" class="materialize-textarea"
-															name="comment"></textarea>
-														<label for="icon_prefix3"></label> <input type="hidden"
-															name="postUUID" value=<%=postUUID%> />
-													</div>
-												</div>
-												<div class="card-action">
-													<input type="hidden" name="event_type" value="EDIT" /> <input
-														type="hidden" name="uuid" value=<%=commentUUID%> />
-													<button class="btn waves-effect waves-light" type="submit"
-														name="action">
-														Submit <i class="material-icons right">send</i>
-													</button>
-												</div>
-											</form>
+									String postNumuber = (String) sesse.getAttribute("postUUID");
+									if(postNum.compareTo(commentParentUUID) == 0 ){
+									%>	
+								<div class="container">
+						<form action="CommentControllerCommand" method="POST">
+										<div class="card-action">
+											<input type="hidden" name="event_type" value="REPLY" /> <input
+												type="hidden" name="uuid" value=<%=commentUUID%> /> <input
+												type="hidden" name="content" value=<%=commentDescription%> /><label
+												for="icon_prefix3"></label> <input type="hidden"
+												name="postUUID" value=<%=commentParentUUID%> />
+													<textarea id="icon_prefix3" class="materialize-textarea"
+																name="comment"></textarea>
+											<button
+												class="big-nice-allignments-delete btn waves-effect waves-light"
+												type="submit" name="action">Reply</button>
 										</div>
-									</div>
+									</form>
 								</div>
-							</div>
+					<%} %>
+				
+								<%
+ 	HttpSession sess = request.getSession();
+ 			String postUUID = (String) sess.getAttribute("postUUID");
+ 			String uname = (String) sess.getAttribute("username");
+ 			if (commentUsername.compareTo(uname) == 0) {
+ %>
 
-							<%
-								}
-							%>
-
-							<li id="comment-0-show" class="hide">
-								<div class="row">
-									<div class="input-field col s10">
-										<i class="material-icons prefix">mode_edit</i>
-										<textarea id="icon_prefix0" class="materialize-textarea"></textarea>
-										<label for="icon_prefix0"></label>
-									</div>
+								<div class="container">
+									<form action="CommentControllerCommand" method="POST">
+										<div class="card-action">
+											<input type="hidden" name="event_type" value="DELETE" /> <input
+												type="hidden" name="uuid" value=<%=commentUUID%> /> <input
+												type="hidden" name="content" value=<%=commentDescription%> /><label
+												for="icon_prefix3"></label> <input type="hidden"
+												name="postUUID" value=<%=postUUID%> />
+											<button
+												class="big-nice-allignments-delete btn waves-effect waves-light"
+												type="submit" name="action">Delete</button>
+										</div>
+									</form>
+									
+									<form action="CommentControllerCommand" method="POST">
+										<div class="card-action">
+											<input type="hidden" name="event_type" value="EDIT" /> <input
+												type="hidden" name="uuid" value=<%=commentUUID%> /> <input
+												type="hidden" name="content" value=<%=commentDescription%> /><label
+												for="icon_prefix3"></label> <input type="hidden"
+												name="postUUID" value=<%=postUUID%> />
+													<textarea id="icon_prefix3" class="materialize-textarea"
+																name="comment"></textarea>
+											<button
+												class="big-nice-allignments-delete btn waves-effect waves-light"
+												type="submit" name="action">EDIT</button>
+										</div>
+									</form>
 								</div>
+
+						
+	
+	<%
+ 	}
+ %>
+				
 							</li>
 						</div>
 					</div>

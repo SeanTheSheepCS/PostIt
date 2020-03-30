@@ -33,9 +33,9 @@ nav .badge {
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="GetTopics"> Home </a></li>
-				<li><a href="#About-modal" class="modal-trigger"> About </a></li>
-				<li><a href="#"> Contact </a></li>
-				<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
+				<li><a href="#"> About </a></li>
+				<li><a href="userpage.jsp"> Profile </a></li>
+	<!--  <li><a href="#login-modal" class="modal-trigger"> Login </a></li>  -->		
 				<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
 
 				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
@@ -44,72 +44,14 @@ nav .badge {
 			</ul>
 		</div>
 	</nav>
-
-	<div class="modal" id="login-modal">
-		<div class="modal-content" id="login-modal-content">
-			<div class="row">
-
-
-				<div class="col s12 m12 l6">
-					<form action="">
-						<div class="input-field">
-							<input id="login-username-field" type="text" class="validate">
-							<label for="login-username-field">Username</label>
-						</div>
-						<div class="input-field">
-							<input id="login-password-field" type="password" class="validate">
-							<label for="login-password-field">Password</label>
-						</div>
-					</form>
-					<a href="#" class="btn orange">Login</a>
-				</div>
-
-
-				<div class="col s12 m12 l6">
-					<div class="card">
-						<div class="card-content">
-							<form action="">
-								<h4>New User?</h4>
-
-								<div class="input-field">
-									<input id="register-email-field" type="email" class="validate">
-									<label for="register-email-field">Email</label>
-								</div>
-
-								<div class="input-field">
-									<input id="register-username-field" type="text"
-										class="validate"> <label for="register-username-field">Username</label>
-								</div>
-								<div class="input-field">
-									<input id="register-password-field" type="password"
-										class="validate"> <label for="register-password-field">Password</label>
-								</div>
-								<div class="input-field">
-									<input id="register-password-confirm-field" type="password"
-										class="validate"> <label
-										for="register-password-confirm-field">Confirm Password</label>
-								</div>
-								<a href="#" class="btn orange">Register</a>
-							</form>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-	</div>
 	
-	<div class="modal" id="About-modal">
-		<div class="modal-content" id="about-modal-content">
-			<div class="row">
-			<!-- This is what PostIt is ALL about! -->
+<form action = "SearchPostController" method="GET">
+<div class="topnav">
+  <input type="text" placeholder="Please enter a Post name to search for....." name = "postName">
+<input type="submit" class="btn" value="Search"></div>
+</form>	
 
 
-
-			</div>
-		</div>
-	</div>
 
 
 	<div class="modal" id="Post-modal">
@@ -149,11 +91,11 @@ nav .badge {
 
 
 	<ul class="sidenav" id="mobile-links">
-		<li><a href="GetTopics"> Home </a></li>
-		<li><a href="#About-modal" class="modal-trigger"> About </a></li>
+		<li><a href="GetPosts"> Home </a></li>
+		<li><a href="#"> About </a></li>
 		<li><a href="#"> Contact </a></li>
 		<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
-		<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
+		<li><a href="#login-modal" class="modal-trigger"> New Post </a></li>
 
 	</ul>
 
@@ -278,9 +220,9 @@ nav .badge {
 						<div>
 							<input type="hidden" name="postid" value=<%=postId%> /> <input
 								type="hidden" name="votes" value=<%=votes%> /> <input
-								type="hidden" name="desc" value=<%=desc%> /> <input
-								type="hidden" name="topic" value=<%=topic%> /> <input
-								type="hidden" name="title" value=<%=title%> /> <input
+								type="hidden" name="desc" value='<%=desc%>' /> <input
+								type="hidden" name="topic" value='<%=topic%>' /> <input
+								type="hidden" name="title" value='<%=title%>' /> <input
 								type="hidden" name="postUUID" value=<%=uuid%> /> <input
 								type="submit" name="viewPost" value="View full post">
 
@@ -288,7 +230,7 @@ nav .badge {
 						</div>
 					</form>
 
-					<a href="#"> Share post </a>
+					<a href="#"> Share post </a> <a href="#"> Give award </a>
 				</div>
 			</div>
 		</div>
@@ -302,7 +244,7 @@ nav .badge {
 			else{		
 %>
  
-<p>	No Posts! Be the first to create a Post! </p>
+<p>	No Posts! </p>
 
 <% } %>
 
@@ -324,3 +266,7 @@ nav .badge {
 </body>
 </html>
 </html>
+
+
+
+

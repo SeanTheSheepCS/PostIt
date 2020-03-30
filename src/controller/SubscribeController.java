@@ -36,8 +36,7 @@ public class SubscribeController extends HttpServlet {
 
 		model.subscribeUser(username, topic_id);
 
-		hs.setAttribute("TopicId", topic_id);
-		RequestDispatcher rd = request.getRequestDispatcher("/GetPosts");
+		RequestDispatcher rd = request.getRequestDispatcher("/GetTopics");
 		rd.forward(request, response);
 	}
 	
