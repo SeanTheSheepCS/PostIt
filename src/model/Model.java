@@ -107,7 +107,7 @@ public class Model {
 				System.out.println("Error inserting user data into database...");
 			}
 
-			conn.close();
+			//conn.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,7 +132,7 @@ public class Model {
 				System.out.println("Error inserting user data into database...");
 			}
 
-			conn.close();
+			//conn.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();

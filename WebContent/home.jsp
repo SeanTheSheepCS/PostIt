@@ -33,7 +33,8 @@ nav .badge {
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="GetTopics"> Home </a></li>
-				<li><a href="#"> About </a></li>
+				<li><a href="#about-modal" class="modal-trigger"> About </a></li>
+				<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
 				<li><a href="userpage.jsp"> Profile </a></li>
 	<!--  <li><a href="#login-modal" class="modal-trigger"> Login </a></li>  -->		
 				<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
@@ -44,6 +45,31 @@ nav .badge {
 			</ul>
 		</div>
 	</nav>
+	
+	
+<div class="modal" id="about-modal">
+	<div class='modal-header'>
+      <h3 align = center class='col-10 modal-title'> About</h3> </div>
+		<div class="modal-content" id="about-modal-content" align = center >
+			<img src=img/Logo.JPG>
+			<p >Welcome to Post-It! Find topics in which you are interested and POST all about it!</p>
+			<p> Create a new topic and have others join you!!</p>
+			
+
+		</div>
+	</div>
+
+<div class="modal" id="contact-modal">
+	<div class='modal-header'>
+      <h3 align = center class='col-10 modal-title'> Contact</h3> </div>
+		<div class="modal-content" id="contact-modal-content" align = center >
+			<img src=img/Logo.JPG>
+			<p >Need help? Have questions? Contact us!</p>
+			<p> Emails: jiagang.chang1@ucalgary.ca . muzhda.hussain@ucalgary.ca . sean.kenny1@ucalgary.ca . jase.pasay@ucalgary.ca . afshin.rahman@ucalgary.ca . ummeyzarin.tashnim@ucalgary.ca</p>
+			
+
+		</div>
+	</div>
 	
 <form action = "SearchPostController" method="GET">
 <div class="topnav">
@@ -88,12 +114,24 @@ nav .badge {
 	</div>
 
 
+<div class="modal" id=about-modal">
+	<div class='modal-header'>
+      <h2 class='col-12 modal-title text-center'> About</h2>
+    </div>
+		<div class="modal-content" id="about-modal-content">
+			<img src=Logo.JPG align="middle">
+			<p>Welcome to PostIt! in home page </p>
+
+
+		</div>
+	</div>
+
 
 
 	<ul class="sidenav" id="mobile-links">
 		<li><a href="GetPosts"> Home </a></li>
-		<li><a href="#"> About </a></li>
-		<li><a href="#"> Contact </a></li>
+		<li><a href="#about-modal" class="modal-trigger"> About </a></li>
+		<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
 		<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
 		<li><a href="#login-modal" class="modal-trigger"> New Post </a></li>
 
