@@ -331,9 +331,9 @@ nav .badge {
 						<div>
 							<input type="hidden" name="postid" value=<%=postId%> /> <input
 								type="hidden" name="votes" value=<%=votes%> /> <input
-								type="hidden" name="desc" value=<%=desc%> /> <input
-								type="hidden" name="topic" value=<%=topic%> /> <input
-								type="hidden" name="title" value=<%=title%> /> <input
+								type="hidden" name="desc" value='<%=desc%>' /> <input
+								type="hidden" name="topic" value='<%=topic%>' /> <input
+								type="hidden" name="title" value='<%=title%>' /> <input
 								type="hidden" name="postUUID" value=<%=uuid%> /> <input
 								type="submit" name="viewPost" value="View full post">
 
