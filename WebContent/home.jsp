@@ -1,3 +1,4 @@
+<!-- Page that displays all the threads -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -15,16 +16,14 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <title>PostIt</title>
 </head>
-
-<body>
-	<style>
+<style>
 nav .badge {
 	position: relative;
 	top: 20px;
 	right: 20px;
 }
 </style>
-
+<body>
 	<nav class="nav-wrapper indigo">
 		<div class="container">
 			<a href="#" class="brand-logo"> Post-It</a> <a href="#"
@@ -33,12 +32,25 @@ nav .badge {
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="GetTopics"> Home </a></li>
-				<li><a href="#about-modal" class="modal-trigger"> About </a></li>
-				<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
-				<li><a href="userpage.jsp"> Profile </a></li>
-	<!--  <li><a href="#login-modal" class="modal-trigger"> Login </a></li>  -->		
-				<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
-
+				
+				<%
+	String ses=(String) session.getAttribute("username");
+	if (ses==null)// if not logged
+	{
+%>
+				<li class ="" id = "logAbout"><a href="#" > About </a></li>
+				<li class ="hide" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
+			 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li> 
+				<li><a href="#Topic-modal" id = "logTopic"class="hide"> New Topic </a></li>
+			
+			<%}else// if logged 
+				{%>
+				<li class ="" id = "logAbout"><a href="#" > About </a></li>
+				<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
+			 	<li id = "logLogin"><a href="#login-modal" class="hide"> Login </a></li> 
+				<li><a href="#Topic-modal" id = "logTopic"class="modal-trigger"> New Topic </a></li>
+				<%} %>
+				
 				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
 						<i class="material-icons">notifications</i>
 				</a></li>
@@ -46,39 +58,112 @@ nav .badge {
 		</div>
 	</nav>
 	
-	
-<div class="modal" id="about-modal">
-	<div class='modal-header'>
-      <h3 align = center class='col-10 modal-title'> About</h3> </div>
-		<div class="modal-content" id="about-modal-content" align = center >
-			<img src=img/Logo.JPG>
-			<p >Welcome to Post-It! Find topics in which you are interested and POST all about it!</p>
-			<p> Create a new topic and have others join you!!</p>
-			
-
-		</div>
-	</div>
-
-<div class="modal" id="contact-modal">
-	<div class='modal-header'>
-      <h3 align = center class='col-10 modal-title'> Contact</h3> </div>
-		<div class="modal-content" id="contact-modal-content" align = center >
-			<img src=img/Logo.JPG>
-			<p >Need help? Have questions? Contact us!</p>
-			<p> Emails: jiagang.chang1@ucalgary.ca . muzhda.hussain@ucalgary.ca . sean.kenny1@ucalgary.ca . jase.pasay@ucalgary.ca . afshin.rahman@ucalgary.ca . ummeyzarin.tashnim@ucalgary.ca</p>
-			
-
-		</div>
-	</div>
-	
 <form action = "SearchPostController" method="GET">
 <div class="topnav">
   <input type="text" placeholder="Please enter a Post name to search for....." name = "postName">
 <input type="submit" class="btn" value="Search"></div>
 </form>	
 
+	 <form action="Logout" method="post">
+		 <div> 
+		 <% if (ses==null){ %>
+			 <input type="submit" id="logLogout" class ="hide" name="logout-submit" value ="Logout"><br><br>
+			 <%}else{ %>
+			  <input type="submit" id="logLogout" class ="" name="logout-submit" value ="Logout"><br><br>
+			 <%} %>
+		 </div>
+	</form> 
+	
+		<div class="modal" id="login-modal">
+		<div class="modal-content" id="login-modal-content">
+			<div class="row">
+			
+	<!--  new LOGIN MODULE -->	
+				<%
+			String userError = (String) request.getAttribute("userfail");
+			String pwdError = (String) request.getAttribute("pwdfail");
+			String emptyError = (String) request.getAttribute ("emptyfail");
+			String success = (String) request.getAttribute ("succ");
+			if(userError != null){
+			%>
+			<p class = "signuperror" >Username taken </p>
+			<%
+			}
+			else if(pwdError != null){
+			%>
+				<p class = "signuperror" >Passwords do not match </p>
+			<%
+			}
+			else if(emptyError != null){
+			%>
+			<p class = "signuperror" >One or more fields are empty </p>
+			<%
+			}
+			else if(success != null){
+			%>
+			<p class = "signupsuccess" >Signup Success </p>
+			<% 
+			}
+			%>
+			<%
+			String username1 = request.getParameter("uname1");
+			if(username1 != null){
+			%>
+			<p class = "signuperror1" >Sorry, incorrect username or password </p>
+			<%	
+			}
+			%>
+			
+				<div class="col s12 m12 l6">
+					<form action="ValidateUser" method="post">
+						<div class="input-field">
+							<input id="login-username-field" name = "uname1" type="text" class="validate">
+							<label for="login-username-field">Username</label>
+						</div>
+						<div class="input-field">
+							<input id="login-password-field" name ="upass" type="password" class="validate">
+							<label for="login-password-field">Password</label>
+						</div>
+						<input type="submit" name="login-submit" value="Login">
+					</form>
+
+				</div>
 
 
+				<div class="col s12 m12 l6">
+					<div class="card">
+						<div class="card-content">
+							<form action="SignupUser" method = "get">
+								<h4>New User?</h4>
+
+								<div class="input-field">
+									<input id="register-email-field" name = "mail" type="email" class="validate">
+									<label for="register-email-field">Email</label>
+								</div>
+
+								<div class="input-field">
+									<input id="register-username-field" name = "uname" type="text"
+										class="validate"> <label for="register-username-field">Username</label>
+								</div>
+								<div class="input-field">
+									<input id="register-password-field" name = "pwd" type="password"
+										class="validate"> <label for="register-password-field">Password</label>
+								</div>
+								<div class="input-field">
+									<input id="register-password-confirm-field" name = "pwd-confirm" type="password"
+										class="validate"> <label
+										for="register-password-confirm-field">Confirm Password</label>
+								</div>
+								<input type="submit" name="signup-submit" value="Sign Up">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  END OF THE NEW LOGIN MODULE -->
+	
 
 	<div class="modal" id="Post-modal">
 		<div class="modal-content" id="login-modal-content">
@@ -114,24 +199,12 @@ nav .badge {
 	</div>
 
 
-<div class="modal" id=about-modal">
-	<div class='modal-header'>
-      <h2 class='col-12 modal-title text-center'> About</h2>
-    </div>
-		<div class="modal-content" id="about-modal-content">
-			<img src=Logo.JPG align="middle">
-			<p>Welcome to PostIt! in home page </p>
-
-
-		</div>
-	</div>
-
 
 
 	<ul class="sidenav" id="mobile-links">
 		<li><a href="GetPosts"> Home </a></li>
-		<li><a href="#about-modal" class="modal-trigger"> About </a></li>
-		<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
+		<li><a href="#"> About </a></li>
+		<li><a href="#"> Contact </a></li>
 		<li><a href="#login-modal" class="modal-trigger"> Login </a></li>
 		<li><a href="#login-modal" class="modal-trigger"> New Post </a></li>
 
@@ -258,9 +331,9 @@ nav .badge {
 						<div>
 							<input type="hidden" name="postid" value=<%=postId%> /> <input
 								type="hidden" name="votes" value=<%=votes%> /> <input
-								type="hidden" name="desc" value='<%=desc%>' /> <input
-								type="hidden" name="topic" value='<%=topic%>' /> <input
-								type="hidden" name="title" value='<%=title%>' /> <input
+								type="hidden" name="desc" value=<%=desc%> /> <input
+								type="hidden" name="topic" value=<%=topic%> /> <input
+								type="hidden" name="title" value=<%=title%> /> <input
 								type="hidden" name="postUUID" value=<%=uuid%> /> <input
 								type="submit" name="viewPost" value="View full post">
 
@@ -295,11 +368,11 @@ nav .badge {
 			$('.sidenav').sidenav();
 			$('.modal').modal();
 		})
-		
-		
-		
 	</script>
 
+
+
+	
 
 </body>
 </html>

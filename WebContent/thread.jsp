@@ -63,9 +63,25 @@
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="GetTopics"> Home </a></li>
-				<li><a href="#"> About </a></li>
-				<li><a href="#"> Contact </a></li>
-				<li><a href="#"> Login </a></li>
+					
+				<%
+	String ses=(String) session.getAttribute("username");
+	if (ses==null)// if not logged
+	{
+%>
+				<li class ="" id = "logAbout"><a href="#" > About </a></li>
+				<li class ="hide" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
+			 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li> 
+				<li><a href="#Topic-modal" id = "logTopic"class="hide"> New Topic </a></li>
+			
+			<%}else// if logged 
+				{%>
+				<li class ="" id = "logAbout"><a href="#" > About </a></li>
+				<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
+			 	<li id = "logLogin"><a href="#login-modal" class="hide"> Login </a></li> 
+				<li><a href="#Topic-modal" id = "logTopic"class="modal-trigger"> New Topic </a></li>
+				<%} %>
+				
 				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
 						<i class="material-icons">notifications</i>
 				</a></li>
@@ -128,6 +144,106 @@
 		</div>
 	</div>
 
+	 <form action="Logout" method="post">
+		 <div>
+			 <% if (ses==null){ %>
+			 <input type="submit" id="logLogout" class ="hide" name="logout-submit" value ="Logout"><br><br>
+			 <%}else{ %>
+			  <input type="submit" id="logLogout" class ="" name="logout-submit" value ="Logout"><br><br>
+			 <%} %>
+		 </div>
+	</form> 
+	
+		<div class="modal" id="login-modal">
+		<div class="modal-content" id="login-modal-content">
+			<div class="row">
+			
+<!--  new LOGIN MODULE -->	
+				<%
+			String userError = (String) request.getAttribute("userfail");
+			String pwdError = (String) request.getAttribute("pwdfail");
+			String emptyError = (String) request.getAttribute ("emptyfail");
+			String success = (String) request.getAttribute ("succ");
+			if(userError != null){
+			%>
+			<p class = "signuperror" >Username taken </p>
+			<%
+			}
+			else if(pwdError != null){
+			%>
+				<p class = "signuperror" >Passwords do not match </p>
+			<%
+			}
+			else if(emptyError != null){
+			%>
+			<p class = "signuperror" >One or more fields are empty </p>
+			<%
+			}
+			else if(success != null){
+			%>
+			<p class = "signupsuccess" >Signup Success </p>
+			<% 
+			}
+			%>
+			<%
+			String username1 = request.getParameter("uname1");
+			if(username1 != null){
+			%>
+			<p class = "signuperror1" >Sorry, incorrect username or password </p>
+			<%	
+			}
+			%>
+			
+				<div class="col s12 m12 l6">
+					<form action="ValidateUser" method="post">
+						<div class="input-field">
+							<input id="login-username-field" name = "uname1" type="text" class="validate">
+							<label for="login-username-field">Username</label>
+						</div>
+						<div class="input-field">
+							<input id="login-password-field" name ="upass" type="password" class="validate">
+							<label for="login-password-field">Password</label>
+						</div>
+						<input type="submit" name="login-submit" value="Login"><!-- This wasn't in the form spend an hours debugging this :( -->
+					</form>
+
+				</div>
+
+
+				<div class="col s12 m12 l6">
+					<div class="card">
+						<div class="card-content">
+							<form action="SignupUser" method = "get">
+								<h4>New User?</h4>
+
+								<div class="input-field">
+									<input id="register-email-field" name = "mail" type="email" class="validate">
+									<label for="register-email-field">Email</label>
+								</div>
+
+								<div class="input-field">
+									<input id="register-username-field" name = "uname" type="text"
+										class="validate"> <label for="register-username-field">Username</label>
+								</div>
+								<div class="input-field">
+									<input id="register-password-field" name = "pwd" type="password"
+										class="validate"> <label for="register-password-field">Password</label>
+								</div>
+								<div class="input-field">
+									<input id="register-password-confirm-field" name = "pwd-confirm" type="password"
+										class="validate"> <label
+										for="register-password-confirm-field">Confirm Password</label>
+								</div>
+								<input type="submit" name="signup-submit" value="Sign Up">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  END OF THE NEW LOGIN MODULE -->
+	
 
 	<div class="modal" id="Post-modal">
 		<div class="modal-content" id="login-modal-content">
@@ -339,9 +455,6 @@
 										</div>
 									</form>
 								</div>
-
-						
-	
 	<%
  	}
  %>

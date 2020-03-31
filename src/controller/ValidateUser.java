@@ -25,7 +25,7 @@ public class ValidateUser extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("In validate user GET");
 
-		String uName = request.getParameter("uname");
+		String uName = request.getParameter("uname1");
 		String uPass = request.getParameter("upass");
 
 		if (model.validateUser(uName, uPass)) {
@@ -46,7 +46,7 @@ public class ValidateUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("In validate user");
-		String uName = request.getParameter("uname");
+		String uName = request.getParameter("uname1");
 		String uPass = request.getParameter("upass");
 
 		if (model.validateUser(uName, uPass)) {
@@ -54,9 +54,8 @@ public class ValidateUser extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", uName);
 			session.setAttribute("email", email);
-
+			System.out.println("successful login:"+	session.getAttribute("username"));
 			response.sendRedirect(request.getContextPath() + "/GetTopics");
-
 		}
 
 		else {
