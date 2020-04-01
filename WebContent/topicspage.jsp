@@ -41,9 +41,9 @@
 			
 			<%}else// if logged 
 				{%>
-				<li class ="" id = "logAbout"><a href="#" > About </a></li>
+				<li class ="" id = "logAbout"><a href="#" > About </a></li>	
 				<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
-			 	<li id = "logLogin"><a href="#login-modal" class="hide"> Login </a></li> 
+				<li class ="" id = "logProfile"><a href="Logout"> Logout </a></li>
 				<li><a href="#Topic-modal" id = "logTopic"class="modal-trigger"> New Topic </a></li>
 				<%} %>
 				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
@@ -53,7 +53,7 @@
 		</div>
 	</nav>
 	
-	 <form action="Logout" method="post">
+<!--  	 <form action="Logout" method="post">
 		 <div>
 		 
 		 <% if (ses==null){ %>
@@ -63,7 +63,7 @@
 			 <%} %>
 		 </div>
 	</form> 
-	
+	-->
 		<div class="modal" id="login-modal">
 		<div class="modal-content" id="login-modal-content">
 			<div class="row">

@@ -35,9 +35,8 @@ public class CommentControllerQuery extends HttpServlet {
 		String post_info = (String) hs.getAttribute("postinfo");
 
 		System.out.println("Post ID: " + parent);
-		System.out.println("AND POST INFO" + post_info);
+		System.out.println("JAJAJAJ POST INFO" + post_info);
 		/* Reads events database, if new events then modify/create comments as needed */
-	//	last_event = qm.readEvents(last_event);
 
 		/* Gets all comments related to the post */
 		String comments = qm.getComments(parent, false);

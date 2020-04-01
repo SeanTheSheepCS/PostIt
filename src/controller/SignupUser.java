@@ -49,10 +49,8 @@ public class SignupUser extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", uName);
 			request.setAttribute("succ", uName);
-			//RequestDispatcher rd = request.getRequestDispatcher("topicspage.jsp");
-			response.sendRedirect(request.getContextPath() + "/GetTopics");
-			//response.setHeader("Refresh", "0; URL=http://your-current-page");
-			//rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("signup.jsp");
+			rd.forward(request, response);
 		}
 
 	}
@@ -84,9 +82,8 @@ public class SignupUser extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", uName);
 			request.setAttribute("succ", uName);
-			//RequestDispatcher rd = request.getRequestDispatcher("topicspage.jsp");
-			response.sendRedirect(request.getContextPath() + "/GetTopics");
-			//rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("signup.jsp");
+			rd.forward(request, response);
 		}
 
 	}

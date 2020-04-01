@@ -47,7 +47,7 @@ nav .badge {
 				{%>
 				<li class ="" id = "logAbout"><a href="#" > About </a></li>
 				<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
-			 	<li id = "logLogin"><a href="#login-modal" class="hide"> Login </a></li> 
+			 	<li id = "logLogin"><a href="Logout" class=""> Logout </a></li> 
 				<li><a href="#Topic-modal" id = "logTopic"class="modal-trigger"> New Topic </a></li>
 				<%} %>
 				
@@ -64,7 +64,7 @@ nav .badge {
 <input type="submit" class="btn" value="Search"></div>
 </form>	
 
-	 <form action="Logout" method="post">
+<!-- 	 <form action="Logout" method="post">
 		 <div> 
 		 <% if (ses==null){ %>
 			 <input type="submit" id="logLogout" class ="hide" name="logout-submit" value ="Logout"><br><br>
@@ -73,7 +73,7 @@ nav .badge {
 			 <%} %>
 		 </div>
 	</form> 
-	
+	 -->
 		<div class="modal" id="login-modal">
 		<div class="modal-content" id="login-modal-content">
 			<div class="row">
@@ -252,7 +252,7 @@ nav .badge {
 				String uuid = eachData[6];
 				String image = (String) request.getAttribute("image");
 				String[] images = image.split("\\*");
-				int random = (int) (Math.random() * ((3 - 0) + 1)) + 0;
+				int random = i%3;
 				image = images[random];
 		%>
 
@@ -331,9 +331,9 @@ nav .badge {
 						<div>
 							<input type="hidden" name="postid" value=<%=postId%> /> <input
 								type="hidden" name="votes" value=<%=votes%> /> <input
-								type="hidden" name="desc" value='<%=desc%>' /> <input
-								type="hidden" name="topic" value='<%=topic%>' /> <input
-								type="hidden" name="title" value='<%=title%>' /> <input
+								type="hidden" name="desc" value=<%=desc%> /> <input
+								type="hidden" name="topic" value=<%=topic%> /> <input
+								type="hidden" name="title" value=<%=title%> /> <input
 								type="hidden" name="postUUID" value=<%=uuid%> /> <input
 								type="submit" name="viewPost" value="View full post">
 

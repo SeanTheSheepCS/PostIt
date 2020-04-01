@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.Model;
 
@@ -22,13 +21,10 @@ public class GetTopics extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		//System.out.println("Get topics");
-		System.out.println("User: "+ session.getAttribute("username"));
+		System.out.println("Get topics");
 
 		String topics = model.getTopics();
 		request.setAttribute("topics", topics);
-		session.setAttribute("topics", topics);
 		request.getRequestDispatcher("topicspage.jsp").forward(request, response);
 	}
 	

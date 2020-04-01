@@ -78,7 +78,7 @@
 				{%>
 				<li class ="" id = "logAbout"><a href="#" > About </a></li>
 				<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
-			 	<li id = "logLogin"><a href="#login-modal" class="hide"> Login </a></li> 
+			 	<li id = "logLogin"><a href="Logout" class=""> Logout </a></li> 
 				<li><a href="#Topic-modal" id = "logTopic"class="modal-trigger"> New Topic </a></li>
 				<%} %>
 				
@@ -144,7 +144,7 @@
 		</div>
 	</div>
 
-	 <form action="Logout" method="post">
+<!--	 <form action="Logout" method="post">
 		 <div>
 			 <% if (ses==null){ %>
 			 <input type="submit" id="logLogout" class ="hide" name="logout-submit" value ="Logout"><br><br>
@@ -153,7 +153,7 @@
 			 <%} %>
 		 </div>
 	</form> 
-	
+	  -->
 		<div class="modal" id="login-modal">
 		<div class="modal-content" id="login-modal-content">
 			<div class="row">
@@ -197,7 +197,7 @@
 				<div class="col s12 m12 l6">
 					<form action="ValidateUser" method="post">
 						<div class="input-field">
-							<input id="login-username-field" name = "uname1" type="text" class="validate">
+							<input id="login-username-field" name = "uname" type="text" class="validate">
 							<label for="login-username-field">Username</label>
 						</div>
 						<div class="input-field">
@@ -399,6 +399,8 @@
 								
 							<%
 									String postNumuber = (String) sesse.getAttribute("postUUID");
+									String unamee = (String) sesse.getAttribute("username");
+								if(unamee != null){	
 									if(postNum.compareTo(commentParentUUID) == 0 ){
 									%>	
 								<div class="container">
@@ -417,12 +419,14 @@
 										</div>
 									</form>
 								</div>
-					<%} %>
+					<%					}
+									}%>
 				
 								<%
  	HttpSession sess = request.getSession();
  			String postUUID = (String) sess.getAttribute("postUUID");
  			String uname = (String) sess.getAttribute("username");
+ 		if(uname != null){
  			if (commentUsername.compareTo(uname) == 0) {
  %>
 
@@ -456,7 +460,8 @@
 									</form>
 								</div>
 	<%
- 	}
+ 								}
+							}			
  %>
 				
 							</li>
@@ -471,6 +476,7 @@
 			</div>
 			<%
 				}
+				
 			%>
 
 			<!--THIS IS WHERE COMMENT ON THREAD IS-->
