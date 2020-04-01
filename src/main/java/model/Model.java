@@ -64,7 +64,7 @@ public class Model {
 
 	public String getTopics() {
 
-		String query = "SELECT * FROM topic";
+		String query = "SELECT * FROM topic ORDER BY num_members DESC";
 		String data = "";
 
 		try {
