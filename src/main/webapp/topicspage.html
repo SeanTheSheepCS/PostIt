@@ -21,8 +21,8 @@
       </a>
       <ul class = "right hide-on-med-and-down">
         <li><a href="#"> Home </a></li>
-        <li><a href="#"> About </a></li>
-        <li><a href="#"> Contact </a></li>
+		<li><a href="#about-modal" class="modal-trigger"> About </a></li>
+		<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
         <li><a href="#login-modal" class="modal-trigger"> Login </a></li>
         <li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
           <i class="material-icons">notifications</i>
@@ -30,7 +30,30 @@
       </ul>
     </div>
   </nav>
+  
+<div class="modal" id="about-modal">
+	<div class='modal-header'>
+      <h2 align = center class='col-12 modal-title text-center'> About</h2>
+    </div>
+		<div class="modal-content" id="about-modal-content">
+			<img src=Logo.JPG align="middle">
+			<p>Welcome to PostIt! in topics page</p>
 
+
+		</div>
+	</div>
+
+<div class="modal" id="contact-modal">
+	<div class='modal-header'>
+      <h3 class='col-12 modal-title text-center'> Contact</h3>
+    </div>
+		<div class="modal-content" id="about-modal-content">
+			<img src=Logo.JPG align="middle">
+			<p>Welcome to PostIt! </p>
+
+
+		</div>
+	</div>
   <div class="modal" id="login-modal">
     <div class="modal-content" id="login-modal-content">
       <div class="row">
@@ -87,8 +110,8 @@
 
   <ul class="sidenav" id="mobile-links">
     <li><a href="#"> Home </a></li>
-    <li><a href="#"> About </a></li>
-    <li><a href="#"> Contact </a></li>
+    <li><a href="#about-modal" class="modal-trigger"> About </a></li>
+   <li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
     <li><a href="#login-modal" class="modal-trigger"> Login </a></li>
   </ul>
 

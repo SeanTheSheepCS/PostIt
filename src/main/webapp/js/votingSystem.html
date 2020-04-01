@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+<body>
+    <style>
+        .number {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .vote {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .up-vote {
+            color: dimgray;
+            cursor: pointer;
+        }
+
+        .down-vote {
+            cursor: pointer;
+            color: dimgray;
+        }
+    </style>
+
+    <div class="vote">
+        <span class="up-vote"><i class="fas fa-angle-up"></i></span>
+        <span class="number">0</span>
+        <span class="down-vote"><i class="fas fa-angle-down"></i></span>
+    </div>
+    <div class="vote">
+        <span class="up-vote"><i class="fas fa-angle-up"></i></span>
+        <span class="number">100</span>
+        <span class="down-vote"><i class="fas fa-angle-down"></i></span>
+    </div>
+    <div class="vote">
+        <span class="up-vote"><i class="fas fa-angle-up"></i></span>
+        <span class="number">999</span>
+        <span class="down-vote"><i class="fas fa-angle-down"></i></span>
+    </div>
+    <div class="vote">
+        <span class="up-vote"><i class="fas fa-angle-up"></i></span>
+        <span class="number">99999</span>
+        <span class="down-vote"><i class="fas fa-angle-down"></i></span>
+    </div>
+
+    <script type="text/javascript" src="votingSystem.js"></script>
+</body>
+
+</html>

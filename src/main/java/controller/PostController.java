@@ -24,19 +24,21 @@ public class PostController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("Got into post controller GET");
-
-		HttpSession session = request.getSession();
+		String title = request.getParameter("title");
+		String desc = request.getParameter("desc");
+		String postuuid = request.getParameter("postUUID");
 
 		
-		String title = request.getParameter("title");
-		String postuuid = request.getParameter("postUUID");
-		String desc = request.getParameter("desc");
+		
+		HttpSession session = request.getSession();
 
+	
 		String postInfo = title + "|" + desc + "|" + model.getUsername(postuuid);
 
 		session.setAttribute("postUUID", postuuid);
 		session.setAttribute("postinfo", postInfo);
-
+		
+		System.out.println("POST INFOOOOOO: " + postInfo);
 		System.out.println("Post UUID: " + postuuid);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/CommentControllerQuery");

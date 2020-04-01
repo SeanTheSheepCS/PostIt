@@ -51,12 +51,7 @@ public class CommentControllerCommand extends HttpServlet {
 		String event_type = request.getParameter("event_type");
 
 		String comm = request.getParameter("content");
-
-		System.out.println("Comment is: " + comm);
-
 		String uuid = request.getParameter("uuid");
-
-		System.out.println("Event Type: " + event_type);
 
 		switch (event_type) {
 
@@ -72,6 +67,11 @@ public class CommentControllerCommand extends HttpServlet {
 		case "DELETE":
 			System.out.println("Got into DELETE in switch");
 			cm.deleteCommentEvent(username, parentUUID, uuid, comm);
+			break;
+			
+		case "REPLY":
+			System.out.println("REPLY with info:\nUSERNAME: " + username + "\nParent UUID: " + uuid + "\nComment Info: " + commentInfo);
+			cm.createCommentEvent(username, uuid, commentInfo);
 			break;
 
 		default:

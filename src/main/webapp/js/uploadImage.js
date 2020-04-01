@@ -1,4 +1,3 @@
-//the following code was taken from https://stackoverflow.com/questions/31710127/javascript-image-upload-and-display
 var fileTag = document.getElementById("upload-image"),
     preview = document.getElementById("preview");
 
