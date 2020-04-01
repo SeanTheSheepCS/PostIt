@@ -243,9 +243,9 @@
 					<a onclick="submitform('<%="visitform,".concat("ID=").concat(topic_id) %>')" class="btn" id="topic-one-card-visit-button">Visit</a>
 					<a onclick="submitform('<%="joinform,".concat("ID=").concat(topic_id) %>')" 
 						<% if (ses==null){ %>
-							class="btn" id="topic-one-card-join-button">Join
-						<%}else{ %>	
 							class="hide" id="topic-one-card-join-button">Join
+						<%}else{ %>	
+							class="btn" id="topic-one-card-join-button">Join
 						<%} %>
 					</a>
 					<form action="TopicController" method="GET" id = <%= "visitform,".concat("ID=").concat(topic_id) %> >
