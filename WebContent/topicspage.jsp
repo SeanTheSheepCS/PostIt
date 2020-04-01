@@ -225,6 +225,7 @@
 				<p id="topic-one-card-member-count"> <% out.println("Number of members: " + num_members); %></p>
 
 				<div class="secondary-content">
+					<!--
 					<form action="TopicController" method="GET">
 						<input type="hidden" name="topicid" value=<%=topic_id%> /> <input
 							type="submit" class="btn" value="Visit">
@@ -237,6 +238,21 @@
 								 <%}else{ %>
 									type="submit" id = "logButton" class="btn" value="Join">
 								 <%} %>
+					</form>
+					-->
+					<a onclick="submitform('<%="visitform,".concat("ID=").concat(topic_id) %>')" class="btn" id="topic-one-card-visit-button">Visit</a>
+					<a onclick="submitform('<%="joinform,".concat("ID=").concat(topic_id) %>')" 
+						<% if (ses==null){ %>
+							class="hide" id="topic-one-card-join-button">Join
+						<%}else{ %>	
+							class="btn" id="topic-one-card-join-button">Join
+						<%} %>
+					</a>
+					<form action="TopicController" method="GET" id = <%= "visitform,".concat("ID=").concat(topic_id) %> >
+						<input type="hidden" name="topicid" value=<%=topic_id%> /> 
+					</form>
+					<form action="SubscribeController" method="GET" id = <%="joinform".concat(",ID=").concat(topic_id) %>>
+						<input type="hidden" name="topicid" value=<%=topic_id%> /> 
 					</form>
 				</div></li>
 
@@ -263,6 +279,14 @@
 			$('.modal').modal();
 		})
 		
+	</script>
+	
+	<script>
+	function submitform(formIDToSubmit)
+	{
+		console.log(formIDToSubmit);
+		document.getElementById(formIDToSubmit).submit();
+	}
 	</script>
 	
 </body>
