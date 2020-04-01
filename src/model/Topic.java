@@ -9,7 +9,7 @@ import connection.GetConnection;
 public class Topic {
 
 	public String getTopics() {
-	String query = "SELECT * FROM topics";
+	String query = "SELECT * FROM topic ORDER BY num_members DESC";
 	String data = "";
 	Connection myConn = GetConnection.getMySQLConnection();
 
