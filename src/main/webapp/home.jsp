@@ -27,45 +27,45 @@
 </style>
 
 <!-- Share post feature -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
+<style>
 
-		        .fa {
-		            padding: 10px;
-		            font-size: 15px;
-		            height: 10px;
-		            width: 10px;
-		            text-decoration: none;
-		            border-radius: 10%;
-		            text-align: center;
-		            display: inline;
-		        }
+				.fa {
+						padding: 10px;
+						font-size: 15px;
+						height: 10px;
+						width: 10px;
+						text-decoration: none;
+						border-radius: 10%;
+						text-align: center;
+				}
 
-		            .fa:hover {
-		                opacity: 0.7;
-		            }
+						.fa:hover {
+								opacity: 0.7;
+						}
 
-		        .fa-facebook {
-		            background: #3B5998;
-		            color: white;
-		            text-align: center;
-		            position: relative;
-		            left: 10px;
-		        }
+				.fa-facebook {
+						background: #3B5998;
+						color: white;
+								position: relative;
+								right: 10px;
+								display: inline;
+				}
 
-		        .fa-twitter {
-		            background: #55ACEE;
-		            color: white;
-		            position: relative;
-		            left: 5px;
-		        }
+				.fa-twitter {
+						background: #55ACEE;
+						color: white;
+								position: relative;
+								right: 20px;
+								display: inline;
+				}
 
-		        .fa-instagram {
-		            background: #125688;
-		            color: white;
-		            position: relative;
-		            right: 2px;
-		        }
+				.fa-instagram {
+						background: #125688;
+						color: white;
+								position: relative;
+								right: 30px;
+								display: inline;
+				}
 </style>
 </head>
 <style>
@@ -360,7 +360,7 @@ nav .badge {
 
 						<!-- fav button -->
 						<a href="#" class="halfway-fab waves-effect waves-light btn-floating blue">
-						<i id="heart" onclick="favPost(this)" class="material-icons red" style="color: red;">favorite</i>
+						<i id="heart" onclick="favPost(this)" class="material-icons" style="color: black;">favorite</i>
 						<script>
 						function favPost(x) {
 							x.classList.toggle(document.getElementById("heart").style.color = "red");
@@ -396,11 +396,12 @@ nav .badge {
 					</form>
 
 					<a href="#"> Share post </a>
+					<br>
 					<!-- share buttons -->
+					<br>
 					<a href="http://facebook.com/" class="fa fa-facebook"></a>
 					<a href="https://twitter.com/" class="fa fa-twitter"></a>
 					<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
-					<a href="#"> Give award </a>
 				</div>
 			</div>
 		</div>
