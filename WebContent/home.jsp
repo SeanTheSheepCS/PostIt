@@ -88,54 +88,29 @@ nav .badge {
 				<li><a href="GetTopics"> Home </a></li>
 
 				<%
-				String ses=(String) session.getAttribute("username");
-				if (ses==null)// if not logged
-				{
-			%>
-							<li><a href="#about-modal" class="modal-trigger"> About </a></li>
-							<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
-							<li class ="hide" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
-						 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li>
-							<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
+	String ses=(String) session.getAttribute("username");
+	if (ses==null)// if not logged
+	{
+%>
+				<li class ="" id = "logAbout"><a href="#" > About </a></li>
+				<li class ="hide" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
+			 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li>
+				<li><a href="#Topic-modal" id = "logTopic"class="hide"> New Topic </a></li>
 
-						<%}else// if logged
-							{%>
-							<li><a href="#about-modal" class="modal-trigger"> About </a></li>
-							<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
-							<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
-							<li class ="" id = "logProfile"><a href="Logout"> Logout </a></li>
-							<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
-							<%} %>
-							<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
-									<i class="material-icons">notifications</i>
-							</a></li>
-						</ul>
-					</div>
-				</nav>
+			<%}else// if logged
+				{%>
+				<li class ="" id = "logAbout"><a href="#" > About </a></li>
+				<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
+			 	<li id = "logLogin"><a href="Logout" class=""> Logout </a></li>
+				<li><a href="#Topic-modal" id = "logTopic"class="modal-trigger"> New Topic </a></li>
+				<%} %>
 
-				<div class="modal" id="about-modal">
-				<div class='modal-header'>
-			      <h3 align = center class='col-10 modal-title'>About</h3> </div>
-					<div class="modal-content" id="about-modal-content" align = center >
-						<img src=img/Logo.JPG>
-						<p >Welcome to Post-It! Find topics in which you are interested and POST all about it!</p>
-						<p> Create a new topic and have others join you!!</p>
-
-
-					</div>
-				</div>
-
-			<div class="modal" id="contact-modal">
-				<div class='modal-header'>
-			      <h3 align = center class='col-10 modal-title'> Contact</h3> </div>
-					<div class="modal-content" id="contact-modal-content" align = center >
-						<img src=img/Logo.JPG>
-						<p >Need help? Have questions? Contact us!</p>
-						<p> Emails: jiagang.chang1@ucalgary.ca . muzhda.hussain@ucalgary.ca . sean.kenny1@ucalgary.ca . jase.pasay@ucalgary.ca . afshin.rahman@ucalgary.ca . ummeyzarin.tashnim@ucalgary.ca</p>
-
-
-					</div>
-				</div>
+				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
+						<i class="material-icons">notifications</i>
+				</a></li>
+			</ul>
+		</div>
+	</nav>
 
 <form action = "SearchPostController" method="GET">
 <div class="topnav">
@@ -385,16 +360,15 @@ nav .badge {
 						</div>
 					</form>
 
-					<!-- fav button -->
-					<a href="#" class="halfway-fab waves-effect waves-light btn-floating blue">
-					<i id="heart" onclick="favPost(this)" class="fa fa-heart" style="color:black"></i>
-					<script>
-					function favPost(x) {
-						x.classList.toggle(document.getElementById("heart").style.color = "red");
-					}
-					</script>
-					</a>
-
+						<!-- fav button -->
+						<a href="#" class="halfway-fab waves-effect waves-light btn-floating blue">
+						<i id=<%="heart,".concat("ID=").concat(postId)%> onclick="favPost('<%="heart,".concat("ID=").concat(postId)%>')" class="material-icons" style="color:black">favorite</i>
+						<script>
+						function favPost(id) {
+							document.getElementById(id).setAttribute("style","color:red");
+						}
+						</script>
+						</a>
 				</div>
 				<div class="card-content">
 					<span class="card-title"> <%
@@ -420,8 +394,6 @@ nav .badge {
 								type="hidden" name="title" value=<%=title%> /> <input
 								type="hidden" name="postUUID" value=<%=uuid%> /> <input
 								type="submit" name="viewPost" value="View full post">
-
-
 						</div>
 					</form>
 
@@ -448,7 +420,6 @@ nav .badge {
 <p>	No Posts! </p>
 
 <% } %>
-
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
