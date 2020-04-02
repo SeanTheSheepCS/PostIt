@@ -19,11 +19,13 @@
 <!-- Favorite button feature -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-  .fa {
-      font-size: 40px;
-      cursor: pointer;
-      user-select: none;
-  }
+.fa {
+		font-size: 40px;
+		cursor: pointer;
+		user-select: none;
+		position: relative;
+		bottom: 7px;
+}
 </style>
 
 <!-- Share post feature -->
@@ -360,7 +362,7 @@ nav .badge {
 
 						<!-- fav button -->
 						<a href="#" class="halfway-fab waves-effect waves-light btn-floating blue">
-						<i id="heart" onclick="favPost(this)" class="material-icons" style="color: black;">favorite</i>
+						<i id="heart" onclick="favPost(this)" class="fa fa-heart" style="color:black"></i>
 						<script>
 						function favPost(x) {
 							x.classList.toggle(document.getElementById("heart").style.color = "red");
