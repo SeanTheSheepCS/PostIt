@@ -95,6 +95,12 @@ nav .badge {
 						href="#" id="card-one-favorite-button"><i
 						class="material-icons" id="card-one-favorite-button-icon"></i></a>
 					        <i id="heart-one" onclick="myFunction(this)" class="fa fa-heart" style="color:black"</i>
+
+   						<script>
+    						function myFunction(x) {
+							x.classList.toggle(document.getElementById("heart-one").style.color = "red");
+						    }
+						</script>
 				</div>
 				<div class="card-content" id="card-one-content">
 					<span class="card-title truncate" id="card-one-title"></span> <span
@@ -132,6 +138,11 @@ nav .badge {
 						href="#" id="card-two-favorite-button"><i
 						class="material-icons" id="card-two-favorite-button-icon"></i></a>
 					        <i id="heart-two" onclick="myFunction(this)" class="fa fa-heart" style="color:black"</i>
+						<script>
+    						function myFunction(x) {
+							x.classList.toggle(document.getElementById("heart-two").style.color = "red");
+						    }
+						</script>
 				</div>
 				<div class="card-content" id="card-two-content">
 					<span class="card-title truncate" id="card-two-title"></span> <span
