@@ -14,6 +14,16 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <title>PostIt</title>
+	
+<!-- Favorite button feature -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  .fa {
+      font-size: 30px;
+      cursor: pointer;
+      user-select: none;
+  }
+</style>
 </head>
 
 <body>
@@ -84,6 +94,7 @@ nav .badge {
 						class="material-icons" id="card-one-downvote-button-icon"></i></a> <a
 						href="#" id="card-one-favorite-button"><i
 						class="material-icons" id="card-one-favorite-button-icon"></i></a>
+					        <i id="heart-one" onclick="myFunction(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-one-content">
 					<span class="card-title truncate" id="card-one-title"></span> <span
@@ -120,6 +131,7 @@ nav .badge {
 						class="material-icons" id="card-two-downvote-button-icon"></i></a> <a
 						href="#" id="card-two-favorite-button"><i
 						class="material-icons" id="card-two-favorite-button-icon"></i></a>
+					        <i id="heart-two" onclick="myFunction(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-two-content">
 					<span class="card-title truncate" id="card-two-title"></span> <span
