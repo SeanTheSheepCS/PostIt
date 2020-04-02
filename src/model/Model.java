@@ -24,6 +24,7 @@ public class Model {
 
 			if (ps.executeUpdate() == 2) {
 				System.out.println("Error inserting user data into database...");
+			
 			}
 
 			conn.close();
@@ -64,7 +65,7 @@ public class Model {
 
 	public String getTopics() {
 
-		String query = "SELECT * FROM topic";
+		String query = "SELECT * FROM topic ORDER BY num_members DESC";
 		String data = "";
 
 		try {
@@ -106,7 +107,6 @@ public class Model {
 				System.out.println("Error inserting user data into database...");
 			}
 
-			conn.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -131,7 +131,7 @@ public class Model {
 				System.out.println("Error inserting user data into database...");
 			}
 
-			conn.close();
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -356,4 +356,102 @@ public class Model {
 
 		
 	}
+
+	public String getEmail(String uName) {
+		String data = "";
+		String query = "SELECT * FROM users WHERE username = ?";
+
+		try {
+
+			Connection myConn = GetConnection.getMySQLConnection();
+			PreparedStatement pStat1 = myConn.prepareStatement(query);
+			pStat1.setString(1, uName);
+
+			ResultSet myRs = pStat1.executeQuery();
+			
+			while (myRs.next()) {
+				data = myRs.getString("user_email");
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Data" + data);
+		return data;	
+		}
+
+	public String SearchTopics(String topicName) {
+		
+		String data = "";
+		String query = "SELECT * FROM topic WHERE topic_name = ?";
+
+		try {
+
+			Connection myConn = GetConnection.getMySQLConnection();
+			PreparedStatement pStat1 = myConn.prepareStatement(query);
+			pStat1.setString(1, topicName);
+
+			ResultSet myRs = pStat1.executeQuery();
+			
+			while (myRs.next()) {
+				data += myRs.getString("topic_name");
+				data += "|";
+				data += myRs.getString("topic_id");
+				data += "|";
+				data += myRs.getString("num_members");
+				data += "*";
+			
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Data" + data);
+		return data;	
+		
+	}
+
+	public String searchPosts(String postName, String topicId) {
+		String query = "SELECT * FROM posts WHERE topic_id = ? AND title = ?";
+		Connection myConn;
+		String topic = "";
+		String data = "";
+		int topicIdInt = Integer.parseInt(topicId);
+		try {
+			myConn = GetConnection.getMySQLConnection();
+			PreparedStatement pStat1 = myConn.prepareStatement(query);
+			pStat1.setInt(1, topicIdInt);
+			pStat1.setString(2, postName);
+			ResultSet myRs = pStat1.executeQuery();
+			ResultSet myRs2;
+
+			while (myRs.next()) {
+				int votes = myRs.getInt("votes");
+				int postId = myRs.getInt("post_id");
+				String postContent = myRs.getString("post_content");
+				int topic_id = myRs.getInt("topic_id");
+				String user_id = myRs.getString("username");
+				String title = myRs.getString("title");
+				String uuid = myRs.getString("uuid");
+				String query2 = "SELECT * FROM topic AS t WHERE t.topic_id = ?";
+				PreparedStatement pStat = myConn.prepareStatement(query2);
+				pStat.setInt(1, topic_id);
+				myRs2 = pStat.executeQuery();
+				if (myRs2.next()) {
+					topic = myRs2.getString("topic_name");
+				}
+				data += postId + "," + votes + "," + topic + "," + postContent + "," + user_id + "," + title + ","
+						+ uuid;
+				data += "*";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return data;
+	
+	}
+
+
 }

@@ -32,6 +32,24 @@
 	right: 168px;
 	bottom: -20px;
 }
+
+.big-nice-allignments {
+	position: absolute;
+	right: 20px;
+	bottom: 30px;
+}
+
+.big-nice-allignments-delete {
+	position: absolute;
+	right: 30px;
+	bottom: -8px;
+}
+
+.big-nice-allignments-edit {
+	position: absolute;
+	right: 400px;
+	bottom: 30px;
+}
 </style>
 
 <title>Thread Show</title>
@@ -45,15 +63,56 @@
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="GetTopics"> Home </a></li>
-				<li><a href="#"> About </a></li>
-				<li><a href="#"> Contact </a></li>
-				<li><a href="#"> Login </a></li>
-				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
-						<i class="material-icons">notifications</i>
-				</a></li>
-			</ul>
-		</div>
-	</nav>
+					
+				<%
+				String ses=(String) session.getAttribute("username");
+				if (ses==null)// if not logged
+				{
+			%>
+							<li><a href="#about-modal" class="modal-trigger"> About </a></li>
+							<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
+							<li class ="hide" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
+						 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li> 
+							<li><a href="#Topic-modal" id = "logTopic"class="hide"> New Topic </a></li>
+						
+						<%}else// if logged 
+							{%>
+							<li><a href="#about-modal" class="modal-trigger"> About </a></li>
+							<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
+							<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
+							<li class ="" id = "logProfile"><a href="Logout"> Logout </a></li>
+							<li><a href="#Topic-modal" id = "logTopic"class="modal-trigger"> New Topic </a></li>
+							<%} %>
+							<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
+									<i class="material-icons">notifications</i>
+							</a></li>
+						</ul>
+					</div>
+				</nav>
+				
+				<div class="modal" id="about-modal">
+				<div class='modal-header'>
+			      <h3 align = center class='col-10 modal-title'> About</h3> </div>
+					<div class="modal-content" id="about-modal-content" align = center >
+						<img src=img/Logo.JPG>
+						<p >Welcome to Post-It! Find topics in which you are interested and POST all about it!</p>
+						<p> Create a new topic and have others join you!!</p>
+						
+
+					</div>
+				</div>
+
+			<div class="modal" id="contact-modal">
+				<div class='modal-header'>
+			      <h3 align = center class='col-10 modal-title'> Contact</h3> </div>
+					<div class="modal-content" id="contact-modal-content" align = center >
+						<img src=img/Logo.JPG>
+						<p >Need help? Have questions? Contact us!</p>
+						<p> Emails: jiagang.chang1@ucalgary.ca . muzhda.hussain@ucalgary.ca . sean.kenny1@ucalgary.ca . jase.pasay@ucalgary.ca . afshin.rahman@ucalgary.ca . ummeyzarin.tashnim@ucalgary.ca</p>
+						
+
+					</div>
+				</div>
 
 	<div class="modal" id="login-modal">
 		<div class="modal-content" id="login-modal-content">
@@ -70,7 +129,7 @@
 							<input id="login-password-field" type="password" class="validate">
 							<label for="login-password-field">Password</label>
 						</div>
-					<a href="#" class="btn orange">Login</a>
+						<a href="#" class="btn orange">Login</a>
 					</form>
 				</div>
 
@@ -110,6 +169,106 @@
 		</div>
 	</div>
 
+<!--	 <form action="Logout" method="post">
+		 <div>
+			 <% if (ses==null){ %>
+			 <input type="submit" id="logLogout" class ="hide" name="logout-submit" value ="Logout"><br><br>
+			 <%}else{ %>
+			  <input type="submit" id="logLogout" class ="" name="logout-submit" value ="Logout"><br><br>
+			 <%} %>
+		 </div>
+	</form> 
+	  -->
+		<div class="modal" id="login-modal">
+		<div class="modal-content" id="login-modal-content">
+			<div class="row">
+			
+<!--  new LOGIN MODULE -->	
+				<%
+			String userError = (String) request.getAttribute("userfail");
+			String pwdError = (String) request.getAttribute("pwdfail");
+			String emptyError = (String) request.getAttribute ("emptyfail");
+			String success = (String) request.getAttribute ("succ");
+			if(userError != null){
+			%>
+			<p class = "signuperror" >Username taken </p>
+			<%
+			}
+			else if(pwdError != null){
+			%>
+				<p class = "signuperror" >Passwords do not match </p>
+			<%
+			}
+			else if(emptyError != null){
+			%>
+			<p class = "signuperror" >One or more fields are empty </p>
+			<%
+			}
+			else if(success != null){
+			%>
+			<p class = "signupsuccess" >Signup Success </p>
+			<% 
+			}
+			%>
+			<%
+			String username1 = request.getParameter("uname1");
+			if(username1 != null){
+			%>
+			<p class = "signuperror1" >Sorry, incorrect username or password </p>
+			<%	
+			}
+			%>
+			
+				<div class="col s12 m12 l6">
+					<form action="ValidateUser" method="post">
+						<div class="input-field">
+							<input id="login-username-field" name = "uname" type="text" class="validate">
+							<label for="login-username-field">Username</label>
+						</div>
+						<div class="input-field">
+							<input id="login-password-field" name ="upass" type="password" class="validate">
+							<label for="login-password-field">Password</label>
+						</div>
+						<input type="submit" name="login-submit" value="Login"><!-- This wasn't in the form spend an hours debugging this :( -->
+					</form>
+
+				</div>
+
+
+				<div class="col s12 m12 l6">
+					<div class="card">
+						<div class="card-content">
+							<form action="SignupUser" method = "get">
+								<h4>New User?</h4>
+
+								<div class="input-field">
+									<input id="register-email-field" name = "mail" type="email" class="validate">
+									<label for="register-email-field">Email</label>
+								</div>
+
+								<div class="input-field">
+									<input id="register-username-field" name = "uname" type="text"
+										class="validate"> <label for="register-username-field">Username</label>
+								</div>
+								<div class="input-field">
+									<input id="register-password-field" name = "pwd" type="password"
+										class="validate"> <label for="register-password-field">Password</label>
+								</div>
+								<div class="input-field">
+									<input id="register-password-confirm-field" name = "pwd-confirm" type="password"
+										class="validate"> <label
+										for="register-password-confirm-field">Confirm Password</label>
+								</div>
+								<input type="submit" name="signup-submit" value="Sign Up">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  END OF THE NEW LOGIN MODULE -->
+	
 
 	<div class="modal" id="Post-modal">
 		<div class="modal-content" id="login-modal-content">
@@ -221,94 +380,115 @@
 								commentInfo = split[i];
 								System.out.println(split[0]);
 								String[] eachCommentData = split[i].split("\\|");
-								String commentDescription = eachCommentData[0];
-								String commentUUID = eachCommentData[1];
-								String commentParentUUID = eachCommentData[2];
-								String votes = eachCommentData[3];
-								String commentUsername = eachCommentData[4];
+								String reply = eachCommentData[0];
+								String commentDescription = eachCommentData[1];
+								String commentUUID = eachCommentData[2];
+								String commentParentUUID = eachCommentData[3];
+								String votes = eachCommentData[4];
+								String commentUsername = eachCommentData[5];
 					%>
 					<div class="card  blue-grey lighten-5">
 						<div class="card-content">
 							<li id="comment-0"><i class="material-icons circle"
-								id="comment-0-icon"></i> <span class="title"> <%
- 	out.println(commentUsername);
- %>
+								id="comment-0-icon"></i> <span class="title">
+						<strong> <% 	out.println(commentUsername);
+ %></strong>
 							</span>
 								<p>
 
 									<%
+									
+									HttpSession sesse = request.getSession();
+									String postNum = (String) sesse.getAttribute("postUUID");
+									if(postNum.compareTo(commentParentUUID) != 0 ){
+										for(int z = 0; z< split.length; z++){
+											String[] tempCommentData = split[z].split("\\|");
+											if(commentParentUUID.compareTo(tempCommentData[2]) == 0){
+												out.println("Reply to: ");
+												out.println("'" + tempCommentData[1] + "'");
+											}
+								
+							%>
+							<p></p>
+							<% 
+									}
+							}
+									
 										out.println(commentDescription);
+										//		out.println("COMMENT UUID " + commentUUID);
+
+												//if(reply.compareTo("REPLY") == 0)
+										//		out.println("REPLY TO: " + commentParentUUID);
 									%>
-								</p> <a onclick="showMessage(0)"
-								class="secondary-content waves-effect waves-light btn-small"><i
-									class="material-icons left">add</i>Reply</a></li>
+								</p>
+								
 							<%
-								HttpSession sess = request.getSession();
-										String postUUID = (String) sess.getAttribute("postUUID");
-										String uname = (String) sess.getAttribute("username");
-										if (commentUsername.compareTo(uname) == 0) {
-							%>
-
-							<div class="container">
-								<form action="CommentControllerCommand" method="POST">
-									<div class="card-action">
-										<input type="hidden" name="event_type" value="DELETE" /> <input
-											type="hidden" name="uuid" value=<%=commentUUID%> /> 
-											<input type="hidden" name="content" value=<%=commentDescription%> /><label
-											for="icon_prefix3"></label> <input type="hidden"
-											name="postUUID" value=<%=postUUID%> />
-										<button class="btn blue" type="submit" name="action">Delete</button>
-									</div>
-								</form>
-							</div>
-
-							<div class="container">
-								<a href="#edit-modal" class="modal-trigger"
-									data-target="edit-modal"> <i class="btn blue"> Edit </i>
-								</a>
-							</div>
-
-							<div class="modal" id="edit-modal">
-								<div class="modal-content" id="edit-modal-content">
-									<div class="row">
-
-										<div class="col s12 m12 l6">
-											<form action="CommentControllerCommand" method="POST">
-												<div class="row">
-													<div class="input-field col s10">
-														<i class="material-icons prefix">mode_edit</i>
-														<textarea id="icon_prefix3" class="materialize-textarea"
-															name="comment"></textarea>
-														<label for="icon_prefix3"></label> <input type="hidden"
-															name="postUUID" value=<%=postUUID%> />
-													</div>
-												</div>
-												<div class="card-action">
-													<input type="hidden" name="event_type" value="EDIT" /> <input
-														type="hidden" name="uuid" value=<%=commentUUID%> />
-													<button class="btn waves-effect waves-light" type="submit"
-														name="action">
-														Submit <i class="material-icons right">send</i>
-													</button>
-												</div>
-											</form>
+									String postNumuber = (String) sesse.getAttribute("postUUID");
+									String unamee = (String) sesse.getAttribute("username");
+								if(unamee != null){	
+									if(postNum.compareTo(commentParentUUID) == 0 ){
+									%>	
+								<div class="container">
+						<form action="CommentControllerCommand" method="POST">
+										<div class="card-action">
+											<input type="hidden" name="event_type" value="REPLY" /> <input
+												type="hidden" name="uuid" value=<%=commentUUID%> /> <input
+												type="hidden" name="content" value=<%=commentDescription%> /><label
+												for="icon_prefix3"></label> <input type="hidden"
+												name="postUUID" value=<%=commentParentUUID%> />
+													<textarea id="icon_prefix3" class="materialize-textarea"
+																name="comment"></textarea>
+											<button
+												class="big-nice-allignments-delete btn waves-effect waves-light"
+												type="submit" name="action">Reply</button>
 										</div>
-									</div>
+									</form>
 								</div>
-							</div>
+					<%					}
+									}%>
+				
+								<%
+ 	HttpSession sess = request.getSession();
+ 			String postUUID = (String) sess.getAttribute("postUUID");
+ 			String uname = (String) sess.getAttribute("username");
+ 		if(uname != null){
+ 			if (commentUsername.compareTo(uname) == 0) {
+ %>
 
-							<%
-								}
-							%>
-
-							<li id="comment-0-show" class="hide">
-								<div class="row">
-									<div class="input-field col s10">
-										<i class="material-icons prefix">mode_edit</i>
-										<textarea id="icon_prefix0" class="materialize-textarea"></textarea>
-										<label for="icon_prefix0"></label>
-									</div>
+								<div class="container">
+									<form action="CommentControllerCommand" method="POST">
+										<div class="card-action">
+											<input type="hidden" name="event_type" value="DELETE" /> <input
+												type="hidden" name="uuid" value=<%=commentUUID%> /> <input
+												type="hidden" name="content" value=<%=commentDescription%> /><label
+												for="icon_prefix3"></label> <input type="hidden"
+												name="postUUID" value=<%=postUUID%> />
+											<button
+												class="big-nice-allignments-delete btn waves-effect waves-light"
+												type="submit" name="action">Delete</button>
+										</div>
+									</form>
+									
+									<form action="CommentControllerCommand" method="POST">
+										<div class="card-action">
+											<input type="hidden" name="event_type" value="EDIT" /> <input
+												type="hidden" name="uuid" value=<%=commentUUID%> /> <input
+												type="hidden" name="content" value=<%=commentDescription%> /><label
+												for="icon_prefix3"></label> <input type="hidden"
+												name="postUUID" value=<%=postUUID%> />
+													<textarea id="icon_prefix3" class="materialize-textarea"
+																name="comment"></textarea>
+											<button
+												class="big-nice-allignments-delete btn waves-effect waves-light"
+												type="submit" name="action">EDIT</button>
+										</div>
+									</form>
 								</div>
+	<%
+ 								}
+							}			
+ %>
+				
 							</li>
 						</div>
 					</div>
@@ -321,6 +501,7 @@
 			</div>
 			<%
 				}
+				
 			%>
 
 			<!--THIS IS WHERE COMMENT ON THREAD IS-->

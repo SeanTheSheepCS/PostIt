@@ -23,12 +23,16 @@ public class ValidateUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("In validate user GET");
+
 		String uName = request.getParameter("uname");
 		String uPass = request.getParameter("upass");
 
 		if (model.validateUser(uName, uPass)) {
+			String email = model.getEmail(uName);
 			HttpSession session = request.getSession();
 			session.setAttribute("username", uName);
+			session.setAttribute("email", email);
 			response.sendRedirect(request.getContextPath() + "/GetTopics");
 
 		}
@@ -41,12 +45,16 @@ public class ValidateUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String uName = request.getParameter("uname");
+		System.out.println("In validate user");
+		String uName = request.getParameter("uname1");
 		String uPass = request.getParameter("upass");
-
+		System.out.println("AJFASJF" + uName + " " + uPass);
 		if (model.validateUser(uName, uPass)) {
+			String email = model.getEmail(uName);
 			HttpSession session = request.getSession();
 			session.setAttribute("username", uName);
+			session.setAttribute("email", email);
+
 			response.sendRedirect(request.getContextPath() + "/GetTopics");
 
 		}

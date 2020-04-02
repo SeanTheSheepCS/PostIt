@@ -1,3 +1,4 @@
+<!--  Login Page -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -14,10 +15,14 @@
 </head>
 <body>
 
+	<% 
+	try{
+		response.sendRedirect(request.getContextPath() + "/GetTopics");
+	    response.sendRedirect("topicspage.jsp");
+	}catch (Exception e)
+	{}
+	%>
 
-<%
-response.sendRedirect(request.getContextPath() + "/GetTopics");
-%>
 	<h1>Welcome to Post-It!</h1>
 	<div class="nav">
 		<ul>
