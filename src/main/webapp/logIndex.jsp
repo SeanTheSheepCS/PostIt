@@ -14,7 +14,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <title>PostIt</title>
-	
+
 <!-- Favorite button feature -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -128,7 +128,7 @@ nav .badge {
 						href="#" id="card-one-favorite-button"><i
 						class="material-icons" id="card-one-favorite-button-icon"></i></a>
 						<!-- card one fav button -->
-						<i id="heart-one" onclick="favPostOne(this)" class="fa fa-heart" style="color:black"</i>
+						<i id="heart-one" onclick="favPostOne(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-one-content">
 					<span class="card-title truncate" id="card-one-title"></span> <span
@@ -170,7 +170,7 @@ nav .badge {
 						href="#" id="card-two-favorite-button"><i
 						class="material-icons" id="card-two-favorite-button-icon"></i></a>
 					     <!-- card two fav button -->
-						<i id="heart-two" onclick="favPostTwo(this)" class="fa fa-heart" style="color:black"</i>
+						<i id="heart-two" onclick="favPostTwo(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-two-content">
 					<span class="card-title truncate" id="card-two-title"></span> <span
@@ -212,7 +212,7 @@ nav .badge {
 						href="#" id="card-three-favorite-button"><i
 						class="material-icons" id="card-three-favorite-button-icon"></i></a>
 						<!-- card three fav button -->
-						<i id="heart-three" onclick="favPostThree(this)" class="fa fa-heart" style="color:black"</i>
+						<i id="heart-three" onclick="favPostThree(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-three-content">
 					<span class="card-title truncate" id="card-three-title"></span> <span
@@ -254,7 +254,7 @@ nav .badge {
 						href="#" id="card-four-favorite-button"><i
 						class="material-icons" id="card-four-favorite-button-icon"></i></a>
 						<!-- card four fav button -->
-						<i id="heart-four" onclick="favPostFour(this)" class="fa fa-heart" style="color:black"</i>
+						<i id="heart-four" onclick="favPostFour(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-four-content">
 					<span class="card-title truncate" id="card-four-title"></span> <span
@@ -296,7 +296,7 @@ nav .badge {
 						href="#" id="card-five-favorite-button"><i
 						class="material-icons" id="card-five-favorite-button-icon"></i></a>
 						<!-- card five fav button -->
-						<i id="heart-five" onclick="favPostFive(this)" class="fa fa-heart" style="color:black"</i>
+						<i id="heart-five" onclick="favPostFive(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-five-content">
 					<span class="card-title truncate" id="card-five-title"></span> <span
@@ -338,7 +338,7 @@ nav .badge {
 						href="#" id="card-six-favorite-button"><i
 						class="material-icons" id="card-six-favorite-button-icon"></i></a>
 						<!-- card six fav button -->
-						<i id="heart-six" onclick="favPostSix(this)" class="fa fa-heart" style="color:black"</i>
+						<i id="heart-six" onclick="favPostSix(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-six-content">
 					<span class="card-title truncate" id="card-six-title"></span> <span
@@ -380,7 +380,7 @@ nav .badge {
 						href="#" id="card-seven-favorite-button"><i
 						class="material-icons" id="card-seven-favorite-button-icon"></i></a>
 						   <!-- card seven fav button -->
-						<i id="heart-seven" onclick="favPostSeven(this)" class="fa fa-heart" style="color:black"</i>
+						<i id="heart-seven" onclick="favPostSeven(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-seven-content">
 					<span class="card-title truncate" id="card-seven-title"></span> <span
@@ -422,7 +422,7 @@ nav .badge {
 						href="#" id="card-eight-favorite-button"><i
 						class="material-icons" id="card-eight-favorite-button-icon"></i></a>
 						<!-- card eight fav button -->
-						<i id="heart-eight" onclick="favPostEight(this)" class="fa fa-heart" style="color:black"</i>
+						<i id="heart-eight" onclick="favPostEight(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-eight-content">
 					<span class="card-title truncate" id="card-eight-title"></span> <span
@@ -464,7 +464,7 @@ nav .badge {
 						href="#" id="card-nine-favorite-button"><i
 						class="material-icons" id="card-nine-favorite-button-icon"></i></a>
 						<!-- card nine fav button -->
-						<i id="heart-nine" onclick="favPostNine(this)" class="fa fa-heart" style="color:black"</i>
+						<i id="heart-nine" onclick="favPostNine(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-nine-content">
 					<span class="card-title truncate" id="card-nine-title"></span> <span
@@ -506,7 +506,7 @@ nav .badge {
 						href="#" id="card-ten-favorite-button"><i
 						class="material-icons" id="card-ten-favorite-button-icon"></i></a>
 						    <!-- card ten fav button -->
-							<i id="heart-ten" onclick="favPostTen(this)" class="fa fa-heart" style="color:black"</i>
+							<i id="heart-ten" onclick="favPostTen(this)" class="fa fa-heart" style="color:black"></i>
 				</div>
 				<div class="card-content" id="card-ten-content">
 					<span class="card-title truncate" id="card-ten-title"></span> <span
