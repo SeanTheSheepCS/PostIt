@@ -15,6 +15,49 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <title>PostIt</title>
+
+<!-- Favorite button feature -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  .fa {
+      font-size: 30px;
+      cursor: pointer;
+      user-select: none;
+  }
+</style>
+
+<!-- Share post feature -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .fa {
+            padding: 10px;
+            font-size: 10px;
+            width: 10px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 10%;
+        }
+
+            .fa:hover {
+                opacity: 0.7;
+            }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+</style>
 </head>
 <style>
 nav .badge {
@@ -32,7 +75,7 @@ nav .badge {
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="GetTopics"> Home </a></li>
-				
+
 				<%
 	String ses=(String) session.getAttribute("username");
 	if (ses==null)// if not logged
@@ -40,45 +83,45 @@ nav .badge {
 %>
 				<li class ="" id = "logAbout"><a href="#" > About </a></li>
 				<li class ="hide" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
-			 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li> 
+			 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li>
 				<li><a href="#Topic-modal" id = "logTopic"class="hide"> New Topic </a></li>
-			
-			<%}else// if logged 
+
+			<%}else// if logged
 				{%>
 				<li class ="" id = "logAbout"><a href="#" > About </a></li>
 				<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
-			 	<li id = "logLogin"><a href="Logout" class=""> Logout </a></li> 
+			 	<li id = "logLogin"><a href="Logout" class=""> Logout </a></li>
 				<li><a href="#Topic-modal" id = "logTopic"class="modal-trigger"> New Topic </a></li>
 				<%} %>
-				
+
 				<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
 						<i class="material-icons">notifications</i>
 				</a></li>
 			</ul>
 		</div>
 	</nav>
-	
+
 <form action = "SearchPostController" method="GET">
 <div class="topnav">
   <input type="text" placeholder="Please enter a Post name to search for....." name = "postName">
 <input type="submit" class="btn" value="Search"></div>
-</form>	
+</form>
 
 <!-- 	 <form action="Logout" method="post">
-		 <div> 
+		 <div>
 		 <% if (ses==null){ %>
 			 <input type="submit" id="logLogout" class ="hide" name="logout-submit" value ="Logout"><br><br>
 			 <%}else{ %>
 			  <input type="submit" id="logLogout" class ="" name="logout-submit" value ="Logout"><br><br>
 			 <%} %>
 		 </div>
-	</form> 
+	</form>
 	 -->
 		<div class="modal" id="login-modal">
 		<div class="modal-content" id="login-modal-content">
 			<div class="row">
-			
-	<!--  new LOGIN MODULE -->	
+
+	<!--  new LOGIN MODULE -->
 				<%
 			String userError = (String) request.getAttribute("userfail");
 			String pwdError = (String) request.getAttribute("pwdfail");
@@ -102,7 +145,7 @@ nav .badge {
 			else if(success != null){
 			%>
 			<p class = "signupsuccess" >Signup Success </p>
-			<% 
+			<%
 			}
 			%>
 			<%
@@ -110,10 +153,10 @@ nav .badge {
 			if(username1 != null){
 			%>
 			<p class = "signuperror1" >Sorry, incorrect username or password </p>
-			<%	
+			<%
 			}
 			%>
-			
+
 				<div class="col s12 m12 l6">
 					<form action="ValidateUser" method="post">
 						<div class="input-field">
@@ -163,7 +206,7 @@ nav .badge {
 		</div>
 	</div>
 	<!--  END OF THE NEW LOGIN MODULE -->
-	
+
 
 	<div class="modal" id="Post-modal">
 		<div class="modal-content" id="login-modal-content">
@@ -310,7 +353,13 @@ nav .badge {
 						class="halfway-fab waves-effect waves-light btn-floating blue">
 						<i class="material-icons">favorite</i>
 					</a>
-
+					<!-- fav button -->
+					<i id="heart" onclick="favPost(this)" class="fa fa-heart" style="color:black"></i>
+					<script>
+					function favPost(x) {
+						x.classList.toggle(document.getElementById("heart").style.color = "red");
+					}
+					</script>
 				</div>
 				<div class="card-content">
 					<span class="card-title"> <%
@@ -336,12 +385,15 @@ nav .badge {
 								type="hidden" name="title" value=<%=title%> /> <input
 								type="hidden" name="postUUID" value=<%=uuid%> /> <input
 								type="submit" name="viewPost" value="View full post">
-
-
 						</div>
 					</form>
 
-					<a href="#"> Share post </a> <a href="#"> Give award </a>
+					<a href="#"> Share post </a>
+					<!-- share buttons -->
+					<a href="http://facebook.com/" class="fa fa-facebook"></a>
+					<a href="https://twitter.com/" class="fa fa-twitter"></a>
+					<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+					<a href="#"> Give award </a>
 				</div>
 			</div>
 		</div>
@@ -352,13 +404,12 @@ nav .badge {
 	</div>
 
 <%	}
-			else{		
+			else{
 %>
- 
+
 <p>	No Posts! </p>
 
 <% } %>
-
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -372,12 +423,8 @@ nav .badge {
 
 
 
-	
+
 
 </body>
 </html>
 </html>
-
-
-
-
