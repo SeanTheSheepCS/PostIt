@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
   .fa {
-      font-size: 30px;
+      font-size: 40px;
       cursor: pointer;
       user-select: none;
   }
@@ -29,34 +29,43 @@
 <!-- Share post feature -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .fa {
-            padding: 10px;
-            font-size: 10px;
-            width: 10px;
-            text-align: center;
-            text-decoration: none;
-            margin: 5px 2px;
-            border-radius: 10%;
-        }
 
-            .fa:hover {
-                opacity: 0.7;
-            }
+		        .fa {
+		            padding: 10px;
+		            font-size: 15px;
+		            height: 10px;
+		            width: 10px;
+		            text-decoration: none;
+		            border-radius: 10%;
+		            text-align: center;
+		            display: inline;
+		        }
 
-        .fa-facebook {
-            background: #3B5998;
-            color: white;
-        }
+		            .fa:hover {
+		                opacity: 0.7;
+		            }
 
-        .fa-twitter {
-            background: #55ACEE;
-            color: white;
-        }
+		        .fa-facebook {
+		            background: #3B5998;
+		            color: white;
+		            text-align: center;
+		            position: relative;
+		            left: 10px;
+		        }
 
-        .fa-instagram {
-            background: #125688;
-            color: white;
-        }
+		        .fa-twitter {
+		            background: #55ACEE;
+		            color: white;
+		            position: relative;
+		            left: 5px;
+		        }
+
+		        .fa-instagram {
+		            background: #125688;
+		            color: white;
+		            position: relative;
+		            right: 2px;
+		        }
 </style>
 </head>
 <style>
@@ -349,17 +358,15 @@ nav .badge {
 						</div>
 					</form>
 
-					<a href="#"
-						class="halfway-fab waves-effect waves-light btn-floating blue">
-						<i class="material-icons">favorite</i>
-					</a>
-					<!-- fav button -->
-					<i id="heart" onclick="favPost(this)" class="fa fa-heart" style="color:black"></i>
-					<script>
-					function favPost(x) {
-						x.classList.toggle(document.getElementById("heart").style.color = "red");
-					}
-					</script>
+						<!-- fav button -->
+						<a href="#" class="halfway-fab waves-effect waves-light btn-floating blue">
+						<i id="heart" onclick="favPost(this)" class="material-icons red" style="color: red;">favorite</i>
+						<script>
+						function favPost(x) {
+							x.classList.toggle(document.getElementById("heart").style.color = "red");
+						}
+						</script>
+						</a>
 				</div>
 				<div class="card-content">
 					<span class="card-title"> <%
