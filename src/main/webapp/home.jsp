@@ -362,7 +362,7 @@ nav .badge {
 
 						<!-- fav button -->
 						<a href="#" class="halfway-fab waves-effect waves-light btn-floating blue">
-						<i id="heart" onclick="favPost(this)" class="fa fa-heart" style="color:black"></i>
+						<i id="heart" onclick="favPost(this)" class="material-icons" style="color:black">favorite</i>
 						<script>
 						function favPost(x) {
 							x.classList.toggle(document.getElementById("heart").style.color = "red");
