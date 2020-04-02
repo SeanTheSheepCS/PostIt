@@ -15,6 +15,60 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <title>PostIt</title>
+
+<!-- Favorite button feature -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fa {
+		font-size: 40px;
+		cursor: pointer;
+		user-select: none;
+		position: relative;
+		bottom: 7px;
+}
+</style>
+
+<!-- Share post feature -->
+<style>
+
+				.fa {
+						padding: 10px;
+						font-size: 15px;
+						height: 10px;
+						width: 10px;
+						text-decoration: none;
+						border-radius: 10%;
+						text-align: center;
+				}
+
+						.fa:hover {
+								opacity: 0.7;
+						}
+
+				.fa-facebook {
+						background: #3B5998;
+						color: white;
+								position: relative;
+								right: 10px;
+								display: inline;
+				}
+
+				.fa-twitter {
+						background: #55ACEE;
+						color: white;
+								position: relative;
+								right: 20px;
+								display: inline;
+				}
+
+				.fa-instagram {
+						background: #125688;
+						color: white;
+								position: relative;
+								right: 30px;
+								display: inline;
+				}
+</style>
 </head>
 <style>
 nav .badge {
@@ -32,7 +86,7 @@ nav .badge {
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="GetTopics"> Home </a></li>
-				
+
 				<%
 				String ses=(String) session.getAttribute("username");
 				if (ses==null)// if not logged
@@ -41,10 +95,10 @@ nav .badge {
 							<li><a href="#about-modal" class="modal-trigger"> About </a></li>
 							<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
 							<li class ="hide" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
-						 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li> 
+						 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li>
 							<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
-						
-						<%}else// if logged 
+
+						<%}else// if logged
 							{%>
 							<li><a href="#about-modal" class="modal-trigger"> About </a></li>
 							<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
@@ -58,7 +112,7 @@ nav .badge {
 						</ul>
 					</div>
 				</nav>
-				
+
 				<div class="modal" id="about-modal">
 				<div class='modal-header'>
 			      <h3 align = center class='col-10 modal-title'>About</h3> </div>
@@ -66,7 +120,7 @@ nav .badge {
 						<img src=img/Logo.JPG>
 						<p >Welcome to Post-It! Find topics in which you are interested and POST all about it!</p>
 						<p> Create a new topic and have others join you!!</p>
-						
+
 
 					</div>
 				</div>
@@ -78,32 +132,32 @@ nav .badge {
 						<img src=img/Logo.JPG>
 						<p >Need help? Have questions? Contact us!</p>
 						<p> Emails: jiagang.chang1@ucalgary.ca . muzhda.hussain@ucalgary.ca . sean.kenny1@ucalgary.ca . jase.pasay@ucalgary.ca . afshin.rahman@ucalgary.ca . ummeyzarin.tashnim@ucalgary.ca</p>
-						
+
 
 					</div>
 				</div>
-	
+
 <form action = "SearchPostController" method="GET">
 <div class="topnav">
   <input type="text" placeholder="Please enter a Post name to search for....." name = "postName">
 <input type="submit" class="btn" value="Search"></div>
-</form>	
+</form>
 
 <!-- 	 <form action="Logout" method="post">
-		 <div> 
+		 <div>
 		 <% if (ses==null){ %>
 			 <input type="submit" id="logLogout" class ="hide" name="logout-submit" value ="Logout"><br><br>
 			 <%}else{ %>
 			  <input type="submit" id="logLogout" class ="" name="logout-submit" value ="Logout"><br><br>
 			 <%} %>
 		 </div>
-	</form> 
+	</form>
 	 -->
 		<div class="modal" id="login-modal">
 		<div class="modal-content" id="login-modal-content">
 			<div class="row">
-			
-	<!--  new LOGIN MODULE -->	
+
+	<!--  new LOGIN MODULE -->
 				<%
 			String userError = (String) request.getAttribute("userfail");
 			String pwdError = (String) request.getAttribute("pwdfail");
@@ -127,7 +181,7 @@ nav .badge {
 			else if(success != null){
 			%>
 			<p class = "signupsuccess" >Signup Success </p>
-			<% 
+			<%
 			}
 			%>
 			<%
@@ -135,10 +189,10 @@ nav .badge {
 			if(username1 != null){
 			%>
 			<p class = "signuperror1" >Sorry, incorrect username or password </p>
-			<%	
+			<%
 			}
 			%>
-			
+
 				<div class="col s12 m12 l6">
 					<form action="ValidateUser" method="post">
 						<div class="input-field">
@@ -188,7 +242,7 @@ nav .badge {
 		</div>
 	</div>
 	<!--  END OF THE NEW LOGIN MODULE -->
-	
+
 
 	<div class="modal" id="Post-modal">
 		<div class="modal-content" id="login-modal-content">
@@ -331,9 +385,14 @@ nav .badge {
 						</div>
 					</form>
 
-					<a href="#"
-						class="halfway-fab waves-effect waves-light btn-floating blue">
-						<i class="material-icons">favorite</i>
+					<!-- fav button -->
+					<a href="#" class="halfway-fab waves-effect waves-light btn-floating blue">
+					<i id="heart" onclick="favPost(this)" class="fa fa-heart" style="color:black"></i>
+					<script>
+					function favPost(x) {
+						x.classList.toggle(document.getElementById("heart").style.color = "red");
+					}
+					</script>
 					</a>
 
 				</div>
@@ -366,7 +425,13 @@ nav .badge {
 						</div>
 					</form>
 
-					<a href="#"> Share post </a> 
+					<a href="#"> Share post </a>
+					<br>
+					<!-- share buttons -->
+					<br>
+					<a href="http://facebook.com/" class="fa fa-facebook"></a>
+					<a href="https://twitter.com/" class="fa fa-twitter"></a>
+					<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 				</div>
 			</div>
 		</div>
@@ -377,9 +442,9 @@ nav .badge {
 	</div>
 
 <%	}
-			else{		
+			else{
 %>
- 
+
 <p>	No Posts! </p>
 
 <% } %>
@@ -397,12 +462,8 @@ nav .badge {
 
 
 
-	
+
 
 </body>
 </html>
 </html>
-
-
-
-
