@@ -24,6 +24,39 @@
       user-select: none;
   }
 </style>
+
+<!-- Share post feature -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .fa {
+            padding: 10px;
+            font-size: 10px;
+            width: 10px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 10%;
+        }
+
+            .fa:hover {
+                opacity: 0.7;
+            }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+</style>
 </head>
 
 <body>
@@ -94,13 +127,8 @@ nav .badge {
 						class="material-icons" id="card-one-downvote-button-icon"></i></a> <a
 						href="#" id="card-one-favorite-button"><i
 						class="material-icons" id="card-one-favorite-button-icon"></i></a>
-					        <i id="heart-one" onclick="myFunction(this)" class="fa fa-heart" style="color:black"</i>
-
-   						<script>
-    						function myFunction(x) {
-							x.classList.toggle(document.getElementById("heart-one").style.color = "red");
-						    }
-						</script>
+						<!-- card one fav button -->
+						<i id="heart-one" onclick="favPostOne(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-one-content">
 					<span class="card-title truncate" id="card-one-title"></span> <span
@@ -114,6 +142,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-one-action-share-post"></a>
+							<!-- card one share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-one-action-give-award"></a>
@@ -137,12 +169,8 @@ nav .badge {
 						class="material-icons" id="card-two-downvote-button-icon"></i></a> <a
 						href="#" id="card-two-favorite-button"><i
 						class="material-icons" id="card-two-favorite-button-icon"></i></a>
-					        <i id="heart-two" onclick="myFunction(this)" class="fa fa-heart" style="color:black"</i>
-						<script>
-    						function myFunction(x) {
-							x.classList.toggle(document.getElementById("heart-two").style.color = "red");
-						    }
-						</script>
+					     <!-- card two fav button -->
+						<i id="heart-two" onclick="favPostTwo(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-two-content">
 					<span class="card-title truncate" id="card-two-title"></span> <span
@@ -156,6 +184,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-two-action-share-post"></a>
+							<!-- card two share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-two-action-give-award"></a>
@@ -179,6 +211,8 @@ nav .badge {
 						class="material-icons" id="card-three-downvote-button-icon"></i></a> <a
 						href="#" id="card-three-favorite-button"><i
 						class="material-icons" id="card-three-favorite-button-icon"></i></a>
+						<!-- card three fav button -->
+						<i id="heart-three" onclick="favPostThree(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-three-content">
 					<span class="card-title truncate" id="card-three-title"></span> <span
@@ -192,6 +226,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-three-action-share-post"></a>
+							<!-- card three share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-three-action-give-award"></a>
@@ -215,6 +253,8 @@ nav .badge {
 						class="material-icons" id="card-four-downvote-button-icon"></i></a> <a
 						href="#" id="card-four-favorite-button"><i
 						class="material-icons" id="card-four-favorite-button-icon"></i></a>
+						<!-- card four fav button -->
+						<i id="heart-four" onclick="favPostFour(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-four-content">
 					<span class="card-title truncate" id="card-four-title"></span> <span
@@ -228,6 +268,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-four-action-share-post"></a>
+							<!-- card four share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-four-action-give-award"></a>
@@ -251,6 +295,8 @@ nav .badge {
 						class="material-icons" id="card-five-downvote-button-icon"></i></a> <a
 						href="#" id="card-five-favorite-button"><i
 						class="material-icons" id="card-five-favorite-button-icon"></i></a>
+						<!-- card five fav button -->
+						<i id="heart-five" onclick="favPostFive(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-five-content">
 					<span class="card-title truncate" id="card-five-title"></span> <span
@@ -264,6 +310,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-five-action-share-post"></a>
+							<!-- card five share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-five-action-give-award"></a>
@@ -287,6 +337,8 @@ nav .badge {
 						class="material-icons" id="card-six-downvote-button-icon"></i></a> <a
 						href="#" id="card-six-favorite-button"><i
 						class="material-icons" id="card-six-favorite-button-icon"></i></a>
+						<!-- card six fav button -->
+						<i id="heart-six" onclick="favPostSix(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-six-content">
 					<span class="card-title truncate" id="card-six-title"></span> <span
@@ -300,6 +352,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-six-action-share-post"></a>
+							<!-- card six share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-six-action-give-award"></a>
@@ -323,6 +379,8 @@ nav .badge {
 						class="material-icons" id="card-seven-downvote-button-icon"></i></a> <a
 						href="#" id="card-seven-favorite-button"><i
 						class="material-icons" id="card-seven-favorite-button-icon"></i></a>
+						   <!-- card seven fav button -->
+						<i id="heart-seven" onclick="favPostSeven(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-seven-content">
 					<span class="card-title truncate" id="card-seven-title"></span> <span
@@ -336,6 +394,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-seven-action-share-post"></a>
+							<!-- card seven share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-seven-action-give-award"></a>
@@ -359,6 +421,8 @@ nav .badge {
 						class="material-icons" id="card-eight-downvote-button-icon"></i></a> <a
 						href="#" id="card-eight-favorite-button"><i
 						class="material-icons" id="card-eight-favorite-button-icon"></i></a>
+						<!-- card eight fav button -->
+						<i id="heart-eight" onclick="favPostEight(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-eight-content">
 					<span class="card-title truncate" id="card-eight-title"></span> <span
@@ -372,6 +436,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-eight-action-share-post"></a>
+							<!-- card eight share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-eight-action-give-award"></a>
@@ -395,6 +463,8 @@ nav .badge {
 						class="material-icons" id="card-nine-downvote-button-icon"></i></a> <a
 						href="#" id="card-nine-favorite-button"><i
 						class="material-icons" id="card-nine-favorite-button-icon"></i></a>
+						<!-- card nine fav button -->
+						<i id="heart-nine" onclick="favPostNine(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-nine-content">
 					<span class="card-title truncate" id="card-nine-title"></span> <span
@@ -408,6 +478,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-nine-action-share-post"></a>
+							<!-- card nine share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-nine-action-give-award"></a>
@@ -431,6 +505,8 @@ nav .badge {
 						class="material-icons" id="card-ten-downvote-button-icon"></i></a> <a
 						href="#" id="card-ten-favorite-button"><i
 						class="material-icons" id="card-ten-favorite-button-icon"></i></a>
+						    <!-- card ten fav button -->
+							<i id="heart-ten" onclick="favPostTen(this)" class="fa fa-heart" style="color:black"</i>
 				</div>
 				<div class="card-content" id="card-ten-content">
 					<span class="card-title truncate" id="card-ten-title"></span> <span
@@ -444,6 +520,10 @@ nav .badge {
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-ten-action-share-post"></a>
+							<!-- card ten share buttons -->
+							<a href="http://facebook.com/" class="fa fa-facebook"></a>
+							<a href="https://twitter.com/" class="fa fa-twitter"></a>
+							<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 						</div>
 						<div class="col s12 m6 l3">
 							<a href="#" id="card-ten-action-give-award"></a>
@@ -469,6 +549,7 @@ nav .badge {
 		<li class="waves-effect"><a href=#!><i class="material-icons">chevron_right</i></a></li>
 	</ul>
 
+	<script src="js/favButton.js"></script>
 	<script src="js/populatingPostsScript.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
