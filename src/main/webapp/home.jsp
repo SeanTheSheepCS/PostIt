@@ -362,10 +362,10 @@ nav .badge {
 
 						<!-- fav button -->
 						<a href="#" class="halfway-fab waves-effect waves-light btn-floating blue">
-						<i id="heart" onclick="favPost(this)" class="material-icons" style="color:black">favorite</i>
+						<i id=<%="heart,".concat("ID=").concat(postId)%> onclick="favPost('<%="heart,".concat("ID=").concat(postId)%>')" class="material-icons" style="color:black">favorite</i>
 						<script>
-						function favPost(x) {
-							x.classList.toggle(document.getElementById("heart").style.color = "red");
+						function favPost(id) {
+							document.getElementById(id).setAttribute("style","color:red");
 						}
 						</script>
 						</a>
