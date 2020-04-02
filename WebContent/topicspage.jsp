@@ -57,7 +57,7 @@
 	
 	<div class="modal" id="about-modal">
 	<div class='modal-header'>
-      <h3 align = center class='col-10 modal-title'> About</h3> </div>
+      <h3 align = center class='col-10 modal-title'>About</h3> </div>
 		<div class="modal-content" id="about-modal-content" align = center >
 			<img src=img/Logo.JPG>
 			<p >Welcome to Post-It! Find topics in which you are interested and POST all about it!</p>
@@ -69,7 +69,7 @@
 
 <div class="modal" id="contact-modal">
 	<div class='modal-header'>
-      <h3 align = center class='col-10 modal-title'> Contact</h3> </div>
+      <h3 align = center class='col-10 modal-title'>Contact</h3> </div>
 		<div class="modal-content" id="contact-modal-content" align = center >
 			<img src=img/Logo.JPG>
 			<p >Need help? Have questions? Contact us!</p>

@@ -42,7 +42,7 @@ nav .badge {
 							<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
 							<li class ="hide" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
 						 	<li  id = "logLogin"><a href="#login-modal" class="modal-trigger"> Login </a></li> 
-							<li><a href="#Topic-modal" id = "logTopic"class="hide"> New Topic </a></li>
+							<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
 						
 						<%}else// if logged 
 							{%>
@@ -50,7 +50,7 @@ nav .badge {
 							<li><a href="#contact-modal" class="modal-trigger"> Contact </a></li>
 							<li class ="" id = "logProfile"><a href="userpage.jsp"> Profile </a></li>
 							<li class ="" id = "logProfile"><a href="Logout"> Logout </a></li>
-							<li><a href="#Topic-modal" id = "logTopic"class="modal-trigger"> New Topic </a></li>
+							<li><a href="#Post-modal" class="modal-trigger"> New Post </a></li>
 							<%} %>
 							<li><a href="#" class="btn-floating indigo darken-4 z-depth-0">
 									<i class="material-icons">notifications</i>
@@ -61,7 +61,7 @@ nav .badge {
 				
 				<div class="modal" id="about-modal">
 				<div class='modal-header'>
-			      <h3 align = center class='col-10 modal-title'> About</h3> </div>
+			      <h3 align = center class='col-10 modal-title'>About</h3> </div>
 					<div class="modal-content" id="about-modal-content" align = center >
 						<img src=img/Logo.JPG>
 						<p >Welcome to Post-It! Find topics in which you are interested and POST all about it!</p>
